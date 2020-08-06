@@ -26,13 +26,26 @@
 
 				<?php if ($this->ion_auth->logged_in()) : ?>
 					<li class="treeview">
-						<a href="#"><i class="fa fa-archive"></i> <span>Inventory</span>
+						<a href="#"><i class="fa fa-archive"></i> <span>Barang Masuk</span>
 							<span class="pull-right-container">
 								<i class="fa fa-angle-left pull-right"></i>
 							</span>
 						</a>
 						<ul class="treeview-menu">
 							<li><a href="<?php echo base_url('inventory') ?>"><i class="fa fa-plus"></i> Tambah data</a></li>
+							<li><a href="<?php echo base_url('inventory/all') ?>"><i class="fa fa-list-alt"></i> Semua data</a></li>
+							<li><a href="<?php echo base_url('inventory/by_category') ?>"><i class="fa fa-star-o"></i> By Category</a></li>
+							<li><a href="<?php echo base_url('inventory/by_location') ?>"><i class="fa fa-map-pin"></i> By Location</a></li>
+							<li><a href="<?php echo base_url('inventory/search') ?>"><i class="fa fa-search"></i> Pencarian</a></li>
+						</ul>
+					</li>
+					<li class="treeview">
+						<a href="#"><i class="fa fa-archive"></i> <span>Barang Keluar</span>
+							<span class="pull-right-container">
+								<i class="fa fa-angle-left pull-right"></i>
+							</span>
+						</a>
+						<ul class="treeview-menu">
 							<li><a href="<?php echo base_url('inventory/all') ?>"><i class="fa fa-list-alt"></i> Semua data</a></li>
 							<li><a href="<?php echo base_url('inventory/by_category') ?>"><i class="fa fa-star-o"></i> By Category</a></li>
 							<li><a href="<?php echo base_url('inventory/by_location') ?>"><i class="fa fa-map-pin"></i> By Location</a></li>
