@@ -1,22 +1,22 @@
-<?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+<?php if (!defined('BASEPATH')) exit('No direct script access allowed');
 /**
-* Name:  Auth Lang - Indonesia
-*
-* Author: 	Daeng Muhammad Feisal
-*     http://daengdoang.wordpress.com
-*			daengdoang@gmail.com
-*			@daengdoang
-*
-*
-*
-* Location: http://github.com/benedmunds/ion_auth/
-*
-* Created:  21.06.2013
-* Last-Edit: 21.06.2017
-*
-* Description:  Indonesia language file for Ion Auth example views
-*
-*/
+ * Name:  Auth Lang - Indonesia
+ *
+ * Author: 	Daeng Muhammad Feisal
+ *     http://daengdoang.wordpress.com
+ *			daengdoang@gmail.com
+ *			@daengdoang
+ *
+ *
+ *
+ * Location: http://github.com/benedmunds/ion_auth/
+ *
+ * Created:  21.06.2013
+ * Last-Edit: 21.06.2017
+ *
+ * Description:  Indonesia language file for Ion Auth example views
+ *
+ */
 
 // Errors
 $lang['error_csrf'] = 'Form yang dikirim tidak lulus pemeriksaan keamanan kami.';
@@ -32,7 +32,7 @@ $lang['login_forgot_password'] = 'Lupa Kata Sandi?';
 
 // Index
 $lang['index_heading']           = 'Pengguna';
-$lang['index_subheading']        = 'Berkut adalah daftar dari para Pengguna.';
+$lang['index_subheading']        = 'Berikut adalah daftar dari para Pengguna.';
 $lang['index_fname_th']          = 'Nama Depan';
 $lang['index_lname_th']          = 'Nama Belakang';
 $lang['index_username_th']       = 'Username';
