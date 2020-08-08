@@ -6,11 +6,11 @@
 		<section class="content-header">
 			<h1>
 				Barang Masuk
-				<small>All your items data</small>
+				<small>Semua data </small>
 			</h1>
 			<ol class="breadcrumb">
 				<li class="active"><i class="fa fa-archive"></i> &nbsp; Inventory</li>
-				<li class="active">Add New</li>
+				<li class="active">Tambah Data</li>
 			</ol>
 		</section>
 
@@ -20,7 +20,7 @@
 			<!-- Insert New Data box -->
 			<div class="box">
 				<div class="box-header with-border">
-					<h3 class="box-title">Add New Data
+					<h3 class="box-title">Tambah Data
 					</h3>
 
 					<div class="box-tools pull-right">
@@ -31,16 +31,16 @@
 					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 						<?php echo $message; ?>
 						<form id="input_form" action="<?php echo base_url('inventory/add') ?>" method="post" autocomplete="off" class="form form-horizontal" enctype="multipart/form-data">
-							<h3>Basic Info</h3>
+							<h3>Info Dasar</h3>
 							<fieldset>
 								<div class="form-group">
-									<label for="code" class="control-label col-md-2">* Code</label>
+									<label for="code" class="control-label col-md-2">* Kode</label>
 									<div class="col-md-4">
 										<input type="text" name="code" id="code" class="form-control required" required>
 									</div>
 								</div>
 								<div class="form-group">
-									<label for="brand" class="control-label col-md-2">* Brand</label>
+									<label for="brand" class="control-label col-md-2">* Nama Produk</label>
 									<div class="col-md-8">
 										<input type="text" name="brand" id="brand" class="form-control required" required>
 										<div class="autocomplete-suggestions hide">
@@ -51,7 +51,7 @@
 									</div>
 								</div>
 								<div class="form-group">
-									<label for="model" class="control-label col-md-2">Model</label>
+									<label for="model" class="control-label col-md-2">Tipe</label>
 									<div class="col-md-8">
 										<input type="text" name="model" id="model" class="form-control">
 									</div>
@@ -64,7 +64,7 @@
 								</div>
 								<hr>
 								<div class="form-group">
-									<label for="category" class="control-label col-md-2">* Category</label>
+									<label for="category" class="control-label col-md-2">* Kategori</label>
 									<div class="col-md-8">
 										<div class="row">
 											<?php if (count($cat_list->result()) > 3) : ?>
@@ -180,7 +180,7 @@
 										</div><?php */ ?>
 								</div>
 								<div class="form-group">
-									<label for="location" class="control-label col-md-2">* Location</label>
+									<label for="location" class="control-label col-md-2">* Lokasi</label>
 									<div class="col-md-4">
 										<select name="location" id="location" class="form-control select2 required" style="width:100%">
 											<?php foreach ($loc_list->result() as $lls) {
@@ -190,14 +190,14 @@
 									</div>
 								</div>
 								<div class="form-group">
-									<p class="col-md-8 col-md-offset-2">(*) Mandatory</p>
+									<p class="col-md-8 col-md-offset-2">(*) Wajib Diisi</p>
 								</div>
 							</fieldset>
 
-							<h3>Specifications</h3>
+							<h3>Spesifikasi</h3>
 							<fieldset>
 								<div class="form-group">
-									<label for="color" class="control-label col-md-2">Color</label>
+									<label for="color" class="control-label col-md-2">Warna</label>
 									<div class="col-md-4">
 										<div id="color_container">
 											<select name="color" id="color" class="form-control select2 required" style="width:100%">
@@ -211,13 +211,13 @@
 									<div class="col-md-6">
 										<label for="color_switch">
 											<input type="checkbox" name="color_switch" id="color_switch" value="color_switch">
-											New Color
+											Warna Baru
 										</label>
 									</div>
 								</div>
 								<hr>
 								<div class="form-group">
-									<label for="length" class="control-label col-md-2">Length</label>
+									<label for="length" class="control-label col-md-2">Panjang</label>
 									<div class="col-md-4">
 										<div class="input-group">
 											<input type="number" name="length" id="length" class="form-control" maxlength="12" min="0">
@@ -244,7 +244,7 @@
 									</div>
 								</div>
 								<div class="form-group">
-									<label for="weight" class="control-label col-md-2">Weight</label>
+									<label for="weight" class="control-label col-md-2">Berat</label>
 									<div class="col-md-4">
 										<div class="input-group">
 											<input type="number" name="weight" id="weight" class="form-control" maxlength="12" min="0">
@@ -257,7 +257,7 @@
 							<h3>Additional Info</h3>
 							<fieldset>
 								<div class="form-group">
-									<label for="price" class="control-label col-md-2">Price</label>
+									<label for="price" class="control-label col-md-2">Harga</label>
 									<div class="col-md-4">
 										<div class="input-group">
 											<span class="input-group-addon">Rp</span>
@@ -266,7 +266,7 @@
 									</div>
 								</div>
 								<div class="form-group">
-									<label for="date_of_purchase" class="control-label col-md-2">Date of Purchase</label>
+									<label for="date_of_purchase" class="control-label col-md-2">Tanggal Masuk</label>
 									<div class="col-md-4">
 										<div class="input-group">
 											<input type="text" name="date_of_purchase" id="date_of_purchase" class="form-control datepicker" maxlength="10">
@@ -276,13 +276,13 @@
 								</div>
 								<hr>
 								<div class="form-group">
-									<label for="description" class="control-label col-md-2">Description</label>
+									<label for="description" class="control-label col-md-2">Deskripsi</label>
 									<div class="col-md-10">
 										<textarea name="description" id="description" class="form-control text_editor" rows="4" style="resize:vertical; min-height:100px; max-height:200px;"></textarea>
 									</div>
 								</div>
 								<div class="form-group">
-									<label for="photo" class="control-label col-md-2">Photo</label>
+									<label for="photo" class="control-label col-md-2">Foto</label>
 									<div class="col-md-10">
 										<input type="file" name="photo" id="photo" class="form-control">
 									</div>
@@ -317,20 +317,20 @@
 								<div class="btn-group">
 									<button class="btn btn-default" title="Show / Hide" id="myboxwidget">
 										<i class="fa fa-plus fa-3x"></i><br>
-										<h4>Add New</h4>
+										<h4>Tambah Data</h4>
 									</button>
 								</div>
 								<a href="<?php echo base_url('inventory/all'); ?>" class="btn btn-default" role="button">
 									<i class="fa fa-list fa-3x"></i><br>
-									<h4>All Datas</h4>
+									<h4>Semua Data</h4>
 								</a>
 								<a href="<?php echo base_url('inventory/by_category'); ?>" class="btn btn-default" role="button">
 									<i class="fa fa-star fa-3x"></i><br>
-									<h4>Data by Categories</h4>
+									<h4>Data Kategori</h4>
 								</a>
 								<a href="<?php echo base_url('inventory/by_location'); ?>" class="btn btn-default" role="button">
 									<i class="fa fa-map-marker fa-3x"></i><br>
-									<h4>Data by Locations</h4>
+									<h4>Data Lokasi</h4>
 								</a>
 							</div>
 						</div>

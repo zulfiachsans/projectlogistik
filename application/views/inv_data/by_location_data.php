@@ -6,12 +6,12 @@
 		<section class="content-header">
 			<h1>
 				Inventory
-				<small>Your data sorted per location</small>
+				<small>Urutkan data berdasarkan Lokasi </small>
 			</h1>
 
 			<ol class="breadcrumb">
 				<li><a href="<?php echo base_url("inventory") ?>"><i class="fa fa-archive"></i> Inventory</a></li>
-				<li><a href="<?php echo base_url("inventory/by_location"); ?>">Location</a></li>
+				<li><a href="<?php echo base_url("inventory/by_location"); ?>">Lokasi</a></li>
 				<li class="active"><?php echo $location_name ?></li>
 			</ol>
 		</section>
@@ -31,7 +31,7 @@
 					</div>
 				</div>
 				<div class="box-body">
-					<?php echo $message;?>
+					<?php echo $message; ?>
 					<?php echo $location_desc; ?>
 					<hr>
 
@@ -41,37 +41,37 @@
 								<tr>
 									<th>Code</th>
 									<th>Brand - Model</th>
-									<th>Category</th>
-									<th>Photo</th>
+									<th>Kategori</th>
+									<th>Foto</th>
 									<th>#</th>
 								</tr>
 							</thead>
 							<tbody>
-							<?php if (count($data_list->result())>0): ?>
-								<?php foreach ($data_list->result() as $data): ?>
-								<tr>
-									<td><?php echo $data->code; ?></td>
-									<td><?php echo $data->brand. " " .$data->model; ?></td>
-									<td><?php echo $data->category_name; ?></td>
-									<td><?php if ($data->thumbnail!="") :?><a href="<?php echo base_url('assets/uploads/images/inventory/').$data->photo ?>" data-fancybox data-caption="<?php echo $data->brand . " " . $data->model ?>">
-										<img src="<?php echo base_url('assets/uploads/images/inventory/').$data->thumbnail ?>" alt="<?php echo $data->brand . " " . $data->model ?>"></a><?php endif ?></td>
-									<td width="15%">
-										<form action="<?php echo base_url('inventory/delete/'.$data->code) ?>" method="post" autocomplete="off">
-											<div class="btn-group-vertical">
-												<a class="btn btn-sm btn-default" href="<?php echo base_url('inventory/detail/'.$data->code) ?>" role="button"><i class="fa fa-eye"></i> Detail</a>
-												<a class="btn btn-sm btn-primary" href="<?php echo base_url('inventory/edit/'.$data->code) ?>" role="button"><i class="fa fa-pencil"></i> Edit</a>
-												<input type="hidden" name="id" value="<?php echo $data->id; ?>">
-												<button type="submit" class="btn btn-sm btn-danger" role="button" onclick="return confirm('Delete this data?')"><i class="fa fa-trash"></i> Delete</button>
-											</div>
-										</form>
-									</td>
-								</tr>
-								<?php endforeach ?>
-							<?php else: ?>
-								<tr>
-									<td class="text-center" colspan="5">No Data Found!</td>
-								</tr>
-							<?php endif ?>
+								<?php if (count($data_list->result()) > 0) : ?>
+									<?php foreach ($data_list->result() as $data) : ?>
+										<tr>
+											<td><?php echo $data->code; ?></td>
+											<td><?php echo $data->brand . " " . $data->model; ?></td>
+											<td><?php echo $data->category_name; ?></td>
+											<td><?php if ($data->thumbnail != "") : ?><a href="<?php echo base_url('assets/uploads/images/inventory/') . $data->photo ?>" data-fancybox data-caption="<?php echo $data->brand . " " . $data->model ?>">
+														<img src="<?php echo base_url('assets/uploads/images/inventory/') . $data->thumbnail ?>" alt="<?php echo $data->brand . " " . $data->model ?>"></a><?php endif ?></td>
+											<td width="15%">
+												<form action="<?php echo base_url('inventory/delete/' . $data->code) ?>" method="post" autocomplete="off">
+													<div class="btn-group-vertical">
+														<a class="btn btn-sm btn-default" href="<?php echo base_url('inventory/detail/' . $data->code) ?>" role="button"><i class="fa fa-eye"></i> Detail</a>
+														<a class="btn btn-sm btn-primary" href="<?php echo base_url('inventory/edit/' . $data->code) ?>" role="button"><i class="fa fa-pencil"></i> Edit</a>
+														<input type="hidden" name="id" value="<?php echo $data->id; ?>">
+														<button type="submit" class="btn btn-sm btn-danger" role="button" onclick="return confirm('Delete this data?')"><i class="fa fa-trash"></i> Hapus</button>
+													</div>
+												</form>
+											</td>
+										</tr>
+									<?php endforeach ?>
+								<?php else : ?>
+									<tr>
+										<td class="text-center" colspan="5">Data Tidak Ditemukan !</td>
+									</tr>
+								<?php endif ?>
 							</tbody>
 						</table>
 					</div>
@@ -80,7 +80,7 @@
 				<div class="box-footer text-center">
 					<?php echo $pagination; ?>
 					<br>
-					<a href="<?php echo base_url('inventory/by_location'); ?>" class="btn btn-primary">Back to Inventory by Location</a>
+					<a href="<?php echo base_url('inventory/by_location'); ?>" class="btn btn-primary">Kembali ke Inventory menurut Lokasi</a>
 					<?php echo (isset($last_query)) ? $last_query : ""; ?>&nbsp;
 					<!-- Footer -->
 				</div>

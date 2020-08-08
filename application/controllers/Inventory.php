@@ -530,7 +530,7 @@ class Inventory extends CI_Controller
 							$config['file_name']     = trim($this->input->post('code') . str_replace(" ", "_", $this->input->post('brand')) . str_replace(" ", "_", $this->input->post('model')));
 							$config['upload_path']   = './assets/uploads/images/inventory/';
 							$config['allowed_types'] = 'gif|jpg|png';
-							$config['max_size']      = 2048;
+							$config['max_size']      = 5000;
 							$config['overwrite']     = TRUE;
 							$this->load->library('upload', $config);
 							// fail to upload

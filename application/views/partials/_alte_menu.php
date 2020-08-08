@@ -20,7 +20,7 @@
 				<li class="header">MAIN NAVIGATION</li>
 				<li>
 					<a href="<?php echo base_url() ?>">
-						<i class="fa fa-home"></i> <span>Beranda</span>
+						<i class="fa fa-tachometer"></i> <span>Dashboard</span>
 					</a>
 				</li>
 
@@ -55,34 +55,34 @@
 					<li class="header">MASTER</li>
 					<li>
 						<a href="<?php echo base_url('categories') ?>">
-							<i class="fa fa-star"></i> <span>Categories</span>
+							<i class="fa fa-star"></i> <span>Kategori</span>
 						</a>
 					</li>
 					<li>
 						<a href="<?php echo base_url('locations') ?>">
-							<i class="fa fa-map-marker"></i> <span>Locations</span>
+							<i class="fa fa-map-marker"></i> <span>Lokasi</span>
 						</a>
 					</li>
 					<li>
 						<a href="<?php echo base_url('color') ?>">
-							<i class="fa fa-tint"></i> <span>Color</span>
+							<i class="fa fa-tint"></i> <span>Warna</span>
 						</a>
 					</li>
 					<?php if ($this->ion_auth->is_admin()) : ?>
 						<li>
 							<a href="<?php echo base_url('status') ?>">
-								<i class="fa fa-heart"></i> <span>Inventory Status</span>
+								<i class="fa fa-heart"></i> <span>Status Penyimpanan</span>
 							</a>
 						</li>
 						<!-- Menu Admin -->
-						<li class="header">SETTINGS</li>
+						<li class="header">Pengaturan</li>
 						<li>
 							<a href="<?php echo base_url('auth') ?>">
-								<i class="fa fa-users"></i> <span>Users</span>
+								<i class="fa fa-users"></i> <span>Tambah Pengguna</span>
 							</a>
 						</li>
 					<?php endif ?>
-					<li class="header">OPTIONS</li>
+					<li class="header">Pilihan Lain</li>
 					<li>
 						<a href="<?php echo base_url('auth/logout') ?>">
 							<i class="fa fa-sign-out"></i> <span>Logout</span>

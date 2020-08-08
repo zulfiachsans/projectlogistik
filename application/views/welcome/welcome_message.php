@@ -5,10 +5,14 @@
 <div class="content-wrapper">
 	<!-- Content Header (Page header) -->
 	<section class="content-header">
-		<h1>
-			Beranda
+
+		<h3>
+			<img src="img/umm.png" width="50px">
+			<img src="img/ristek.png" width="50px">
+			<img src="img/kabmagelang.png" width="40px">
+			Sistem Informasi Logistik Lembaga Penanggulangan Bencana Desa Deyangan
 			<!-- <small>it all starts here</small> -->
-		</h1>
+		</h3>
 		<ol class="breadcrumb">
 			<li class="active"><i class="fa fa-dashboard"></i> Beranda</li>
 		</ol>
