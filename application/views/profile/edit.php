@@ -5,11 +5,11 @@
 		<!-- Content Header (Page header) -->
 		<section class="content-header">
 			<h1>
-				Profile
-				<small>Edit Profile</small>
+				Profil
+				<small>Edit Profil</small>
 			</h1>
 			<ol class="breadcrumb">
-				<li><i class="fa fa-user"></i> &nbsp; Profile</li>
+				<li><i class="fa fa-user"></i> &nbsp; Profil</li>
 				<li class="active"><i class="fa fa-pencil"></i> &nbsp; Edit</li>
 			</ol>
 		</section>
@@ -29,7 +29,7 @@
 						</div>
 					</div>
 					<div class="box-body">
-						<?php echo $message;?>
+						<?php echo $message; ?>
 						<?php $myprofile = $this->ion_auth->user()->row(); ?>
 						<div class="row">
 							<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
@@ -43,13 +43,13 @@
 								</div>
 								<hr>
 								<div class="form-group">
-									<label for="first_name" class="control-label col-sm-3">First Name</label>
+									<label for="first_name" class="control-label col-sm-3">Nama Awal</label>
 									<div class="col-sm-9">
 										<input type="text" name="first_name" id="first_name" class="form-control" value="<?php echo $myprofile->first_name ?>">
 									</div>
 								</div>
 								<div class="form-group">
-									<label for="last_name" class="control-label col-sm-3">Last Name</label>
+									<label for="last_name" class="control-label col-sm-3">Nama Akhir</label>
 									<div class="col-sm-9">
 										<input type="text" name="last_name" id="last_name" class="form-control" value="<?php echo $myprofile->last_name ?>">
 									</div>
@@ -61,21 +61,21 @@
 									</div>
 								</div>
 								<div class="form-group">
-									<label for="phone" class="control-label col-sm-3">Phone</label>
+									<label for="phone" class="control-label col-sm-3">No-Handphone</label>
 									<div class="col-sm-9">
 										<input type="text" name="phone" id="phone" class="form-control" value="<?php echo $myprofile->phone ?>">
 									</div>
 								</div>
 								<hr>
 								<div class="form-group">
-									<label for="password" class="control-label col-sm-3">New Password</label>
+									<label for="password" class="control-label col-sm-3">Password Baru</label>
 									<div class="col-sm-9">
 										<input type="password" name="password" id="password" class="form-control">
 										<p class="help-block">Isikan hanya jika ingin mengubah password. Biarkan kosong jika ingin tetap menggunakan password lama.</p>
 									</div>
 								</div>
 								<div class="form-group">
-									<label for="password_confirm" class="control-label col-sm-3">Confirm Password</label>
+									<label for="password_confirm" class="control-label col-sm-3">Konfirmasi Password</label>
 									<div class="col-sm-9">
 										<input type="password" name="password_confirm" id="password_confirm" class="form-control">
 									</div>
@@ -83,10 +83,10 @@
 							</div>
 							<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
 								<div class="form-group">
-									<label for="photo" class="control-label col-sm-3">Photo</label>
+									<label for="photo" class="control-label col-sm-3">Foto</label>
 									<div class="col-sm-9">
 										<input type="file" name="user_photo" id="user_photo" class="form-control">
-										<img src="<?php echo base_url('assets/uploads/images/profile/'.$user_photo->photo); ?>" alt="Current User Photo" class="img img-thumbnail form-control-static">
+										<img src="<?php echo base_url('assets/uploads/images/profile/' . $user_photo->photo); ?>" alt="Current User Photo" class="img img-thumbnail form-control-static">
 									</div>
 								</div>
 							</div>
@@ -94,7 +94,7 @@
 					</div>
 					<!-- /.box-body -->
 					<div class="box-footer text-center">
-						<button type="submit" class="btn btn-primary">Save Changes</button>
+						<button type="submit" class="btn btn-primary">Simpan Perubahan</button>
 						<a class="btn btn-danger" href="<?php echo base_url('profile') ?>" role="button">Cancel</a>
 						<!-- Footer -->
 					</div>
@@ -109,4 +109,3 @@
 	<!-- /.content-wrapper -->
 
 	<!-- =========================== / CONTENT =========================== -->
-
