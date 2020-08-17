@@ -7,7 +7,7 @@
 			<!-- search form -->
 			<form action="<?php echo base_url('inventory/search') ?>" method="post" class="sidebar-form" autocomplete="off">
 				<div class="input-group">
-					<input type="text" name="keyword" class="form-control" placeholder="Search for inventory">
+					<input type="text" name="keyword" class="form-control" placeholder="Cari Inventory">
 					<span class="input-group-btn">
 						<button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>
 						</button>
@@ -17,7 +17,7 @@
 			<!-- /.search form -->
 			<!-- sidebar menu: : style can be found in sidebar.less -->
 			<ul class="sidebar-menu">
-				<li class="header">MAIN NAVIGATION</li>
+				<li class="header">Menu Utama</li>
 				<li>
 					<a href="<?php echo base_url() ?>">
 						<i class="fa fa-tachometer"></i> <span>Dashboard</span>

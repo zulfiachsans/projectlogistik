@@ -22,7 +22,7 @@
 			<!-- Default box -->
 			<div class="box box-primary">
 				<div class="box-header with-border">
-					<h3 class="box-title">Location : <?php echo $location_name ?>
+					<h3 class="box-title">Lokasi : <?php echo $location_name ?>
 					</h3>
 
 					<div class="box-tools pull-right">
@@ -39,8 +39,9 @@
 						<table class="table table-hover table-bordered table-striped">
 							<thead>
 								<tr>
-									<th>Code</th>
-									<th>Brand - Model</th>
+									<th>Kode</th>
+									<th>Nama Produk</th>
+									<th>Tipe</th>
 									<th>Kategori</th>
 									<th>Foto</th>
 									<th>#</th>
@@ -51,7 +52,8 @@
 									<?php foreach ($data_list->result() as $data) : ?>
 										<tr>
 											<td><?php echo $data->code; ?></td>
-											<td><?php echo $data->brand . " " . $data->model; ?></td>
+											<td><?php echo $data->brand; ?></td>
+											<td><?php echo $data->model; ?></td>
 											<td><?php echo $data->category_name; ?></td>
 											<td><?php if ($data->thumbnail != "") : ?><a href="<?php echo base_url('assets/uploads/images/inventory/') . $data->photo ?>" data-fancybox data-caption="<?php echo $data->brand . " " . $data->model ?>">
 														<img src="<?php echo base_url('assets/uploads/images/inventory/') . $data->thumbnail ?>" alt="<?php echo $data->brand . " " . $data->model ?>"></a><?php endif ?></td>

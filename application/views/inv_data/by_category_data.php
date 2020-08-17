@@ -6,12 +6,12 @@
 		<section class="content-header">
 			<h1>
 				Inventory
-				<small>Your data sorted per category</small>
+				<small>Data Anda diurutkan per Kategori</small>
 			</h1>
 
 			<ol class="breadcrumb">
 				<li><a href="<?php echo base_url("inventory") ?>"><i class="fa fa-archive"></i> Inventory</a></li>
-				<li><a href="<?php echo base_url("inventory/by_category"); ?>">Category</a></li>
+				<li><a href="<?php echo base_url("inventory/by_category"); ?>">Kategori</a></li>
 				<li class="active"><?php echo $category_name ?></li>
 			</ol>
 		</section>
@@ -22,7 +22,7 @@
 			<!-- Default box -->
 			<div class="box box-primary">
 				<div class="box-header with-border">
-					<h3 class="box-title">Category : <?php echo $category_name ?>
+					<h3 class="box-title">Kategori : <?php echo $category_name ?>
 					</h3>
 
 					<div class="box-tools pull-right">
@@ -40,7 +40,8 @@
 							<thead>
 								<tr>
 									<th>Kode</th>
-									<th>Brand - Model</th>
+									<th>Nama Produk</th>
+									<th>Tipe</th>
 									<th>Lokasi</th>
 									<th>Foto</th>
 									<th>#</th>
@@ -51,7 +52,8 @@
 									<?php foreach ($data_list->result() as $data) : ?>
 										<tr>
 											<td><?php echo $data->code; ?></td>
-											<td><?php echo $data->brand . " " . $data->model; ?></td>
+											<td><?php echo $data->brand; ?></td>
+											<td><?php echo $data->model; ?></td>
 											<td><?php echo $data->location_name; ?></td>
 											<td><?php if ($data->thumbnail != "") : ?><a href="<?php echo base_url('assets/uploads/images/inventory/') . $data->photo ?>" data-fancybox data-caption="<?php echo $data->brand . " " . $data->model ?>">
 														<img src="<?php echo base_url('assets/uploads/images/inventory/') . $data->thumbnail ?>" alt="<?php echo $data->brand . " " . $data->model ?>"></a><?php endif ?></td>
@@ -80,7 +82,7 @@
 				<div class="box-footer text-center">
 					<?php echo $pagination; ?>
 					<br>
-					<a href="<?php echo base_url('inventory/by_category'); ?>" class="btn btn-primary">Kembali Berdasarkan Kategory</a>
+					<a href="<?php echo base_url('inventory/by_category'); ?>" class="btn btn-primary">Kembali Berdasarkan Kategori</a>
 					<?php echo (isset($last_query)) ? $last_query : ""; ?>&nbsp;
 					<!-- Footer -->
 				</div>

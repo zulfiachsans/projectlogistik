@@ -34,11 +34,13 @@
 						<table class="table table-hover table-bordered table-striped">
 							<thead>
 								<tr>
-									<th>Kode</th>
-									<th>Brand - Model</th>
-									<th>Kategori</th>
-									<th>Lokasi</th>
-									<th>Foto</th>
+									<th width="50">Kode</th>
+									<th width="150">Nama Produk</th>
+									<th width="150">Tipe</th>
+									<th width="150">Total</th>
+									<th width="150">Kategori</th>
+									<th width="150">Lokasi</th>
+									<th width="100">Foto</th>
 									<th>#</th>
 								</tr>
 							</thead>
@@ -47,18 +49,21 @@
 									<?php foreach ($data_list->result() as $data) : ?>
 										<tr>
 											<td><?php echo $data->code; ?></td>
-											<td><?php echo $data->brand . " " . $data->model; ?></td>
+											<td><?php echo $data->brand; ?></td>
+											<td><?php echo $data->model; ?></td>
+											<td></td>
 											<td><?php echo $data->category_name; ?></td>
 											<td><?php echo $data->location_name; ?></td>
 											<td><?php if ($data->thumbnail != "") : ?><a href="<?php echo base_url('assets/uploads/images/inventory/') . $data->photo ?>" data-fancybox data-caption="<?php echo $data->brand . " " . $data->model ?>">
 														<img src="<?php echo base_url('assets/uploads/images/inventory/') . $data->thumbnail ?>" alt="<?php echo $data->brand . " " . $data->model ?>"></a><?php endif ?></td>
-											<td width="15%">
+											<td width="15%" align="center">
 												<form action="<?php echo base_url('inventory/delete/' . $data->code) ?>" method="post" autocomplete="off">
 													<div class="btn-group-vertical">
 														<a class="btn btn-sm btn-default" href="<?php echo base_url('inventory/detail/' . $data->code) ?>" role="button"><i class="fa fa-eye"></i> Detail</a>
 														<a class="btn btn-sm btn-primary" href="<?php echo base_url('inventory/edit/' . $data->code) ?>" role="button"><i class="fa fa-pencil"></i> Edit</a>
 														<input type="hidden" name="id" value="<?php echo $data->id; ?>">
 														<button type="submit" class="btn btn-sm btn-danger" role="button" onclick="return confirm('Delete this data?')"><i class="fa fa-trash"></i> Hapus</button>
+														<a class="btn btn-sm btn-default" href="#" role="button"><i class="fa fa-arrow-right"></i> Pindahkan</a>
 													</div>
 												</form>
 											</td>

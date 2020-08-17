@@ -6,10 +6,10 @@
 		<section class="content-header">
 			<h1>
 				Locations
-				<small>Place for your inventory</small>
+				<small>Tempat Incentory Anda</small>
 			</h1>
 			<ol class="breadcrumb">
-				<li class="active"><i class="fa fa-map-pin"></i> &nbsp; Locations</li>
+				<li class="active"><i class="fa fa-map-pin"></i> &nbsp; Lokasi</li>
 			</ol>
 		</section>
 
@@ -19,7 +19,7 @@
 			<!-- Update Location Data box -->
 			<div class="box">
 				<div class="box-header with-border">
-					<h3 class="box-title">Edit Location
+					<h3 class="box-title">Edit Lokasi
 					</h3>
 
 					<div class="box-tools pull-right">
@@ -29,9 +29,9 @@
 				<div class="box-body">
 
 					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-						<?php echo $message;?>
-						<form action="<?php echo base_url('locations/edit/').$id ?>" method="post" autocomplete="off" class="form form-horizontal" enctype="multipart/form-data">
-							<?php foreach ($data_list->result() as $data){
+						<?php echo $message; ?>
+						<form action="<?php echo base_url('locations/edit/') . $id ?>" method="post" autocomplete="off" class="form form-horizontal" enctype="multipart/form-data">
+							<?php foreach ($data_list->result() as $data) {
 								$curr_code      = $data->code;
 								$curr_name      = $data->name;
 								$curr_detail    = $data->detail;
@@ -46,8 +46,10 @@
 								</div>
 							</div>
 							<div class="form-group">
-								<label for="name" class="control-label col-md-2">* Name</label>
-								<div class="col-md-8 <?php if (form_error('name')) {echo "has-error";} ?>">
+								<label for="name" class="control-label col-md-2">* Nama</label>
+								<div class="col-md-8 <?php if (form_error('name')) {
+															echo "has-error";
+														} ?>">
 									<input type="text" name="name" id="name" class="form-control" value="<?php echo $curr_name ?>" placeholder="Location Name" required>
 								</div>
 							</div>
@@ -58,10 +60,10 @@
 								</div>
 							</div>
 							<div class="form-group">
-								<label for="photo" class="control-label col-md-2">Photo</label>
+								<label for="photo" class="control-label col-md-2">Foto</label>
 								<div class="col-md-8">
-									<?php if ($curr_thumbnail!=""): ?>
-									<img src="<?php echo base_url('assets/uploads/images/locations/').$curr_thumbnail ?>" alt="Current Location Photo">
+									<?php if ($curr_thumbnail != "") : ?>
+										<img src="<?php echo base_url('assets/uploads/images/locations/') . $curr_thumbnail ?>" alt="Current Location Photo">
 									<?php endif ?>
 									<input type="hidden" name="curr_photo" value="<?php echo $curr_photo ?>">
 									<input type="hidden" name="curr_thumbnail" value="<?php echo $curr_thumbnail ?>">
@@ -76,7 +78,7 @@
 							</div>
 							<div class="form-group">
 								<div class="col-md-8 col-md-offset-2">
-								  <p class="help-block">(*) Mandatory</p>
+									<p class="help-block">(*) Wajib Diisi</p>
 								</div>
 							</div>
 						</form>
