@@ -6,11 +6,11 @@
 	<section class="content-header">
 		<h1>
 			Inventory
-			<small>All your items data</small>
+			<small>Semua Data Item </small>
 		</h1>
 		<ol class="breadcrumb">
 			<li class="active"><i class="fa fa-archive"></i> &nbsp; Inventory</li>
-			<li class="active">Edit Data</li>
+			<li class="active">Barang Keluar</li>
 		</ol>
 	</section>
 
@@ -20,74 +20,50 @@
 		<!-- Insert New Data box -->
 		<div class="box">
 			<div class="box-header with-border">
-				<h3 class="box-title">Edit Data
+				<h3 class="box-title">Barang Keluar
 				</h3>
 
 				<div class="box-tools pull-right">
 					<!-- <button class="btn btn-default btn-box-tool" title="Show / Hide" id="myboxwidget"><i class="fa fa-plus"></i> Show / Hide</button> -->
 				</div>
 			</div>
-			<div class="box-body" id="edit_data">
+			<div class="box-body" id="add_new">
 				<?php echo $message; ?>
-				<?php foreach ($data_list->result() as $data) {
-					$curr_code             = $data->code;
-					$curr_brand            = $data->brand;
-					$curr_model            = $data->model;
-					$curr_serial_number    = $data->serial_number;
-					$curr_category_id      = $data->category_id;
-					$curr_location_id      = $data->location_id;
-					$curr_status           = $data->status;
-					$curr_jumlah_datas     = $data->jumlah_datas;
-					$curr_jumlah_dipinjam  = $data->jumlah_dipinjam;
-					$curr_length           = $data->length;
-					$curr_width            = $data->width;
-					$curr_height           = $data->height;
-					$curr_weight           = $data->weight;
-					$curr_color            = $data->color;
-					$curr_price            = $data->price;
-					$curr_date_of_purchase = $data->date_of_purchase;
-					$curr_description      = $data->description;
-					$curr_photo            = $data->photo;
-					$curr_thumbnail        = $data->thumbnail;
-				} ?>
 
 				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-					<form id="input_form" action="<?php echo base_url('inventory/edit/') . $code ?>" method="post" autocomplete="off" class="form form-horizontal" enctype="multipart/form-data">
-						<h3>Basic Info</h3>
+					<form id="input_form" action="<?php echo base_url('inventory/out') ?>" method="post" autocomplete="off" class="form form-horizontal" enctype="multipart/form-data">
+						<h3>Info Dasar</h3>
 						<fieldset>
 							<div class="form-group">
-								<label for="code" class="control-label col-md-2">Kode</label>
+								<label for="code" class="control-label col-md-2">* Kode</label>
 								<div class="col-md-4">
-									<input type="text" name="code" id="code" class="form-control required 
-										<?php if (form_error('code')) { echo "error"; } ?>" 
-										value="<?php echo $curr_code ?>" 
-									disabled>
+									<input type="text" name="code" id="code" class="form-control required <?php if (form_error('code')) {
+																												echo "error";
+																											} ?>" value="<?php echo set_value('code') ?>" required>
 								</div>
 							</div>
 							<div class="form-group">
 								<label for="brand" class="control-label col-md-2">* Nama Produk</label>
 								<div class="col-md-8">
-									<input type="text" name="brand" id="brand" class="form-control required 
-										<?php if (form_error('brand')) { echo "error"; } ?>" 
-										value="<?php echo $curr_brand ?>" 
-									required>
+									<input type="text" name="brand" id="brand" class="form-control required <?php if (form_error('brand')) {
+																												echo "error";
+																											} ?>" value="<?php echo set_value('brand') ?>" required>
 								</div>
 							</div>
 							<div class="form-group">
 								<label for="model" class="control-label col-md-2">Tipe</label>
 								<div class="col-md-8">
-									<input type="text" name="model" id="model" class="form-control 
-										<?php if (form_error('model')) { echo "error"; } ?>" 
-										value="<?php echo $curr_model ?>"
-									>
+									<input type="text" name="model" id="model" class="form-control <?php if (form_error('model')) {
+																										echo "error";
+																									} ?>" value="<?php echo set_value('model') ?>">
 								</div>
 							</div>
 							<div class="form-group">
 								<label for="serial_number" class="control-label col-md-2">Serial Number</label>
 								<div class="col-md-8">
-									<input type="text" name="serial_number" id="serial_number" class="form-control 
-										<?php if (form_error('serial_number')) { echo "error"; } ?>" 
-										value="<?php echo $curr_serial_number ?>">
+									<input type="text" name="serial_number" id="serial_number" class="form-control <?php if (form_error('serial_number')) {
+																														echo "error";
+																													} ?>" value="<?php echo set_value('serial_number') ?>">
 								</div>
 							</div>
 							<hr>
@@ -114,7 +90,7 @@
 											?>
 												<div class="radio">
 													<label for="category2_<?php echo $cls2->id; ?>">
-														<input type="radio" name="category2" id="category2_<?php echo $cls2->id; ?>" value="<?php echo $cls2->id; ?>" <?php echo ($cls2->id == $curr_category_id) ? "checked" : "" ?>>
+														<input type="radio" name="category2" id="category2_<?php echo $cls2->id; ?>" value="<?php echo $cls2->id; ?>" <?php echo set_radio('category2', $cls2->id); ?>>
 														<?php echo $cls2->name ?>
 													</label>
 												</div>
@@ -127,7 +103,7 @@
 													$xs++; ?>
 													<div class="radio">
 														<label for="category2_<?php echo $cls2->id; ?>">
-															<input type="radio" name="category2" id="category2_<?php echo $cls2->id; ?>" value="<?php echo $cls2->id; ?>" <?php echo ($cls2->id == $curr_category_id) ? "checked" : "" ?>>
+															<input type="radio" name="category2" id="category2_<?php echo $cls2->id; ?>" value="<?php echo $cls2->id; ?>" <?php echo set_radio('category2', $cls2->id); ?>>
 															<?php echo $cls2->name ?>
 														</label>
 													</div>
@@ -168,7 +144,7 @@
 											?>
 												<div class="radio">
 													<label for="status2_<?php echo $sls2->id; ?>">
-														<input type="radio" name="status2" id="status2_<?php echo $sls2->id; ?>" value="<?php echo $sls2->id; ?>" <?php echo ($sls2->id == $curr_status) ? "checked" : "" ?>>
+														<input type="radio" name="status2" id="status2_<?php echo $sls2->id; ?>" value="<?php echo $sls2->id; ?>" <?php echo set_radio('status2', $sls2->id); ?>>
 														<?php echo $sls2->name ?>
 													</label>
 												</div>
@@ -181,7 +157,7 @@
 													$xs++; ?>
 													<div class="radio">
 														<label for="status2_<?php echo $sls2->id; ?>">
-															<input type="radio" name="status2" id="status2_<?php echo $sls2->id; ?>" value="<?php echo $sls2->id; ?>" <?php echo ($sls2->id == $curr_status) ? "checked" : "" ?>>
+															<input type="radio" name="status2" id="status2_<?php echo $sls2->id; ?>" value="<?php echo $sls2->id; ?>" <?php echo set_radio('status2', $sls2->id); ?>>
 															<?php echo $sls2->name ?>
 														</label>
 													</div>
@@ -200,22 +176,21 @@
 									</div><?php */ ?>
 							</div>
 							<div class="form-group">
-								<label for="location" class="control-label col-md-2">* Lokasi</label>
+								<label for="location" class="control-label col-md-2">* Location</label>
 								<div class="col-md-4">
 									<select name="location" id="location" class="form-control select2 required" style="width:100%">
 										<?php foreach ($loc_list->result() as $lls) {
-											$selected = ($curr_location_id == $lls->id) ? "selected" : "";
-											echo "<option value='" . $lls->id . "' " . set_select('location', $lls->id) . " $selected>" . $lls->name . "</option>";
+											echo "<option value='" . $lls->id . "' " . set_select('location', $lls->id) . ">" . $lls->name . "</option>";
 										} ?>
 									</select>
 								</div>
 							</div>
 							<div class="form-group">
-								<p class="col-md-8 col-md-offset-2">(*) Wajib diisi</p>
+								<p class="col-md-8 col-md-offset-2">(*) Wajib Diisi</p>
 							</div>
 						</fieldset>
 
-						<h3>Spesifikasi</h3>
+						<h3>Specifications</h3>
 						<fieldset>
 							<div class="form-group">
 								<label for="color" class="control-label col-md-2">Warna</label>
@@ -223,8 +198,7 @@
 									<div id="color_container">
 										<select name="color" id="color" class="form-control select2 required" style="width:100%">
 											<?php foreach ($col_list->result() as $crl) {
-												$selected = ($curr_color == $crl->name) ? "selected" : "";
-												echo "<option value='" . $crl->name . "' " . set_select('color', $crl->name) . " $selected>" . $crl->name . "</option>";
+												echo "<option value='" . $crl->name . "' " . set_select('color', $crl->name) . ">" . $crl->name . "</option>";
 											} ?>
 										</select>
 									</div>
@@ -242,7 +216,7 @@
 								<label for="jumlah_datas" class="control-label col-md-2">Jumlah Datas</label>
 								<div class="col-md-4">
 									<div class="input-group">
-										<input type="number" name="jumlah_datas" id="jumlah_datas" class="form-control" maxlength="12" min="0" value="<?php echo $curr_jumlah_datas ?>">
+										<input type="number" name="jumlah_datas" id="jumlah_datas" class="form-control" maxlength="12" min="0" value="<?php echo set_value('jumlah_datas') ?>">
 									</div>
 								</div>
 							</div>
@@ -250,7 +224,7 @@
 								<label for="jumlah_dipinjam" class="control-label col-md-2">Jumlah Dipinjam</label>
 								<div class="col-md-4">
 									<div class="input-group">
-										<input type="number" name="jumlah_dipinjam" id="jumlah_dipinjam" class="form-control" maxlength="12" min="0" value="<?php echo $curr_jumlah_dipinjam ?>">
+										<input type="number" name="jumlah_dipinjam" id="jumlah_dipinjam" class="form-control" maxlength="12" min="0" value="<?php echo set_value('jumlah_dipinjam') ?>">
 									</div>
 								</div>
 							</div>
@@ -258,7 +232,7 @@
 								<label for="length" class="control-label col-md-2">Panjang</label>
 								<div class="col-md-4">
 									<div class="input-group">
-										<input type="number" name="length" id="length" class="form-control" maxlength="12" min="0" value="<?php echo $curr_length ?>">
+										<input type="number" name="length" id="length" class="form-control" maxlength="12" min="0" value="<?php echo set_value('length') ?>">
 										<span class="input-group-addon">Cm</span>
 									</div>
 								</div>
@@ -267,7 +241,7 @@
 								<label for="width" class="control-label col-md-2">Lebar</label>
 								<div class="col-md-4">
 									<div class="input-group">
-										<input type="number" name="width" id="width" class="form-control" maxlength="12" min="0" value="<?php echo $curr_width ?>">
+										<input type="number" name="width" id="width" class="form-control" maxlength="12" min="0" value="<?php echo set_value('width') ?>">
 										<span class="input-group-addon">Cm</span>
 									</div>
 								</div>
@@ -276,7 +250,7 @@
 								<label for="height" class="control-label col-md-2">Tinggi</label>
 								<div class="col-md-4">
 									<div class="input-group">
-										<input type="number" name="height" id="height" class="form-control" maxlength="12" min="0" value="<?php echo $curr_height ?>">
+										<input type="number" name="height" id="height" class="form-control" maxlength="12" min="0" value="<?php echo set_value('height') ?>">
 										<span class="input-group-addon">Cm</span>
 									</div>
 								</div>
@@ -285,29 +259,29 @@
 								<label for="weight" class="control-label col-md-2">Berat</label>
 								<div class="col-md-4">
 									<div class="input-group">
-										<input type="number" name="weight" id="weight" class="form-control" maxlength="12" min="0" value="<?php echo $curr_weight ?>">
+										<input type="number" name="weight" id="weight" class="form-control" maxlength="12" min="0" value="<?php echo set_value('weight') ?>">
 										<span class="input-group-addon">Kg</span>
 									</div>
 								</div>
 							</div>
 						</fieldset>
 
-						<h3>Informasi tambahan</h3>
+						<h3>Additional Info</h3>
 						<fieldset>
 							<div class="form-group">
 								<label for="price" class="control-label col-md-2">Harga</label>
 								<div class="col-md-4">
 									<div class="input-group">
 										<span class="input-group-addon">Rp</span>
-										<input type="number" name="price" id="price" class="form-control" maxlength="12" min="0" value="<?php echo $curr_price ?>">
+										<input type="number" name="price" id="price" class="form-control" maxlength="12" min="0" value="<?php echo set_value('price') ?>">
 									</div>
 								</div>
 							</div>
 							<div class="form-group">
-								<label for="date_of_purchase" class="control-label col-md-2">Tanggal pembelian</label>
+								<label for="date_of_purchase" class="control-label col-md-2">Tanggal Pembelian</label>
 								<div class="col-md-4">
 									<div class="input-group">
-										<input type="text" name="date_of_purchase" id="date_of_purchase" class="form-control datepicker" maxlength="10" value="<?php echo $curr_date_of_purchase ?>">
+										<input type="text" name="date_of_purchase" id="date_of_purchase" class="form-control datepicker" maxlength="10" value="<?php echo set_value('date_of_purchase') ?>">
 										<span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
 									</div>
 								</div>
@@ -316,16 +290,13 @@
 							<div class="form-group">
 								<label for="description" class="control-label col-md-2">Deskripsi</label>
 								<div class="col-md-10">
-									<textarea name="description" id="description" class="form-control text_editor" rows="4" style="resize:vertical; min-height:100px; max-height:200px;"><?php echo $curr_description ?></textarea>
+									<textarea name="description" id="description" class="form-control text_editor" rows="4" style="resize:vertical; min-height:100px; max-height:200px;"><?php echo set_value('description') ?></textarea>
 								</div>
 							</div>
 							<div class="form-group">
 								<label for="photo" class="control-label col-md-2">Foto</label>
 								<div class="col-md-10">
-									<?php if ($curr_thumbnail != "") : ?><img src="<?php echo base_url("assets/uploads/images/inventory/") . $curr_thumbnail; ?>" alt="Current Photo"><?php endif; ?>
 									<input type="file" name="photo" id="photo" class="form-control">
-									<input type="hidden" name="curr_photo" value="<?php echo $curr_photo; ?>">
-									<input type="hidden" name="curr_thumbnail" value="<?php echo $curr_thumbnail; ?>">
 								</div>
 							</div>
 							<!-- <div class="form-group">

@@ -57,12 +57,6 @@
 									</div>
 								</div>
 								<div class="form-group">
-									<label for="model" class="control-label col-md-2">Jumlah</label>
-									<div class="col-md-8">
-										<input type="text" name="model" id="model" class="form-control">
-									</div>
-								</div>
-								<div class="form-group">
 									<label for="serial_number" class="control-label col-md-2">Serial Number</label>
 									<div class="col-md-8">
 										<input type="text" name="serial_number" id="serial_number" class="form-control">
@@ -223,42 +217,58 @@
 								</div>
 								<hr>
 								<div class="form-group">
-									<label for="length" class="control-label col-md-2">Panjang</label>
+								<label for="jumlah_datas" class="control-label col-md-2">Jumlah Datas</label>
 									<div class="col-md-4">
 										<div class="input-group">
-											<input type="number" name="length" id="length" class="form-control" maxlength="12" min="0">
-											<span class="input-group-addon">Cm</span>
+											<input type="number" name="jumlah_datas" id="jumlah_datas" class="form-control" maxlength="12" min="0">
 										</div>
 									</div>
 								</div>
 								<div class="form-group">
-									<label for="width" class="control-label col-md-2">Width</label>
+									<label for="jumlah_dipinjam" class="control-label col-md-2">Jumlah Dipinjam</label>
 									<div class="col-md-4">
 										<div class="input-group">
-											<input type="number" name="width" id="width" class="form-control" maxlength="12" min="0">
-											<span class="input-group-addon">Cm</span>
+											<input type="number" name="jumlah_dipinjam" id="jumlah_dipinjam" class="form-control" maxlength="12" min="0">
 										</div>
 									</div>
 								</div>
 								<div class="form-group">
-									<label for="height" class="control-label col-md-2">Height</label>
-									<div class="col-md-4">
-										<div class="input-group">
-											<input type="number" name="height" id="height" class="form-control" maxlength="12" min="0">
-											<span class="input-group-addon">Cm</span>
+										<label for="length" class="control-label col-md-2">Panjang</label>
+										<div class="col-md-4">
+											<div class="input-group">
+												<input type="number" name="length" id="length" class="form-control" maxlength="12" min="0">
+												<span class="input-group-addon">Cm</span>
+											</div>
 										</div>
 									</div>
-								</div>
-								<div class="form-group">
-									<label for="weight" class="control-label col-md-2">Berat</label>
-									<div class="col-md-4">
-										<div class="input-group">
-											<input type="number" name="weight" id="weight" class="form-control" maxlength="12" min="0">
-											<span class="input-group-addon">Kg</span>
+									<div class="form-group">
+										<label for="width" class="control-label col-md-2">Width</label>
+										<div class="col-md-4">
+											<div class="input-group">
+												<input type="number" name="width" id="width" class="form-control" maxlength="12" min="0">
+												<span class="input-group-addon">Cm</span>
+											</div>
 										</div>
 									</div>
-								</div>
-							</fieldset>
+									<div class="form-group">
+										<label for="height" class="control-label col-md-2">Height</label>
+										<div class="col-md-4">
+											<div class="input-group">
+												<input type="number" name="height" id="height" class="form-control" maxlength="12" min="0">
+												<span class="input-group-addon">Cm</span>
+											</div>
+										</div>
+									</div>
+									<div class="form-group">
+										<label for="weight" class="control-label col-md-2">Berat</label>
+										<div class="col-md-4">
+											<div class="input-group">
+												<input type="number" name="weight" id="weight" class="form-control" maxlength="12" min="0">
+												<span class="input-group-addon">Kg</span>
+											</div>
+										</div>
+									</div>
+								</fieldset>
 
 							<h3>Additional Info</h3>
 							<fieldset>
