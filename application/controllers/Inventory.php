@@ -454,7 +454,6 @@ class Inventory extends CI_Controller
 			$this->form_validation->set_rules('color', 'Color', 'trim|addslashes');
 			$this->form_validation->set_rules('new_color', 'New Color', 'alpha_numeric_spaces|trim|addslashes');
 			$this->form_validation->set_rules('jumlah_datas', 'jumlah_datas', 'numeric|trim');
-			$this->form_validation->set_rules('jumlah_dipinjam', 'jumlah_dipinjam', 'numeric|trim');
 			$this->form_validation->set_rules('length', 'Length', 'numeric|trim');
 			$this->form_validation->set_rules('width', 'Width', 'numeric|trim');
 			$this->form_validation->set_rules('height', 'Height', 'numeric|trim');
@@ -494,7 +493,6 @@ class Inventory extends CI_Controller
 						'status'           => $this->input->post('status2'),
 						'color'            => $color,
 						'jumlah_datas'     => $this->input->post('jumlah_datas'),
-						'jumlah_dipinjam'  => $this->input->post('jumlah_dipinjam'),
 						'length'           => $this->input->post('length'),
 						'width'            => $this->input->post('width'),
 						'height'           => $this->input->post('height'),
@@ -714,7 +712,6 @@ class Inventory extends CI_Controller
 			$this->form_validation->set_rules('color', 'Color', 'trim|addslashes');
 			$this->form_validation->set_rules('new_color', 'New Color', 'alpha_numeric_spaces|trim|addslashes');
 			$this->form_validation->set_rules('jumlah_datas', 'jumlah_datas', 'numeric|trim');
-			$this->form_validation->set_rules('jumlah_dipinjam', 'jumlah_dipinjam', 'numeric|trim');
 			$this->form_validation->set_rules('length', 'Length', 'numeric|trim');
 			$this->form_validation->set_rules('width', 'Width', 'numeric|trim');
 			$this->form_validation->set_rules('height', 'Height', 'numeric|trim');
@@ -753,7 +750,6 @@ class Inventory extends CI_Controller
 						'status'           => $this->input->post('status2'),
 						'color'            => $color,
 						'jumlah_datas'     => $this->input->post('jumlah_datas'),
-						'jumlah_dipinjam'  => $this->input->post('jumlah_dipinjam'),
 						'length'           => $this->input->post('length'),
 						'width'            => $this->input->post('width'),
 						'height'           => $this->input->post('height'),
@@ -933,20 +929,24 @@ class Inventory extends CI_Controller
 			$this->form_validation->set_rules('code', 'Code', 'alpha_numeric|trim|required');
 			$this->form_validation->set_rules('brand', 'Brand', 'trim|required|addslashes');
 			$this->form_validation->set_rules('jumlah_datas', 'jumlah_datas', 'numeric|trim');
-			$this->form_validation->set_rules('jumlah_dipinjam', 'jumlah_dipinjam', 'numeric|trim');
 			// check if there's valid input
 			if (isset($_POST) && !empty($_POST)) {
 				// validation run
 				if ($this->form_validation->run() === TRUE) {
+					// GET INPUT
 					$code=$this->input->post('code');
+					$brand=$this->input->post('brand');
+					$jumlah_datas=$this->input->post('jumlah_datas');
+					$status=$this->input->post('status');
+					// GET JUMLAH DATAS OLD
+					$datas=$this->db->get_where('inv_datas',array('code'=>$code))->result_array();
+					$jumlah_baru=$datas[0]['jumlah_datas'] - $jumlah_datas;
 					// inv data array
 					$data = array(
-						'brand'            => $this->input->post('brand'),
-						'jumlah_datas'     => $this->input->post('jumlah_datas'),
-						'jumlah_dipinjam'  => $this->input->post('jumlah_dipinjam'),
-						'status'     	   => $this->input->post('status')
+						'brand' => $brand,
+						'jumlah_datas' => $jumlah_baru,
+						'status' => $status	
 					); 
-
 					// check to see if we are updating the data
 					if ($this->inventory_model->update_inventory_by_code($code, $data)) {
 						// Set message
@@ -956,6 +956,7 @@ class Inventory extends CI_Controller
 								. "Inventory Updated!" .
 								$this->config->item('message_end_delimiter', 'ion_auth')
 						);
+						redirect('inv_keluar/add/'.$code.'/'.$jumlah_datas, 'refresh');
 					} else {
 						$this->session->set_userdata(
 							'message',
@@ -974,6 +975,18 @@ class Inventory extends CI_Controller
 			}
 			redirect('inventory/all', 'refresh');
 		}
+	}
+	public function print(){
+		// Not logged in, redirect to home
+		if (!$this->ion_auth->logged_in()) {
+			redirect('auth/login/inventory', 'refresh');
+		}
+		// Logged in
+		else {
+			$this->data['data_list']  = $this->inventory_model->get_inventory();
+			$this->load->view('inv_data/print',$this->data);
+		}
+
 	}
 }
 
