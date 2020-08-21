@@ -20,7 +20,8 @@
 			<!-- Default box -->
 			<div class="box box-primary">
 				<div class="box-header with-border">
-					<h3 class="box-title">Inventory
+					<h3 class="box-title">Inventory &ensp;
+						<a class="btn btn-sm btn-primary" href="<?php echo base_url('inventory/print/') ?>" role="button"><i class="fa fa-print"></i> Print</a>
 					</h3>
 
 					<div class="box-tools pull-right">
@@ -42,7 +43,6 @@
 									<th width="150">Nama Produk</th>
 									<th width="150">Tipe</th>
 									<th width="150">Total Barang</th>
-									<th width="150">Total Dipinjam</th>
 									<th width="150">Kategori</th>
 									<th width="150">Lokasi</th>
 									<th width="100">Foto</th>
@@ -57,7 +57,6 @@
 											<td><?php echo $data->brand; ?></td>
 											<td><?php echo $data->model; ?></td>
 											<td><?php echo $data->jumlah_datas; ?></td>
-											<td><?php echo $data->jumlah_dipinjam; ?></td>
 											<td><?php echo $data->category_name; ?></td>
 											<td><?php echo $data->location_name; ?></td>
 											<td><?php if ($data->thumbnail != "") : ?><a href="<?php echo base_url('assets/uploads/images/inventory/') . $data->photo ?>" data-fancybox data-caption="<?php echo $data->brand . " " . $data->model ?>">
@@ -74,7 +73,6 @@
 														data-code="<?= $data->code ?>" 
 														data-brand="<?= $data->brand ?>" 
 														data-jumlah_datas="<?= $data->jumlah_datas ?>" 
-														data-jumlah_dipinjam="<?= $data->jumlah_dipinjam ?>"
 														data-status="<?= $data->status ?>" 
 														><i class="fa fa-arrow-right"></i> Pindahkan</a>
 													</div>
@@ -84,7 +82,7 @@
 									<?php endforeach ?>
 								<?php else : ?>
 									<tr>
-										<td class="text-center" colspan="6">Data Tidak Ditemukan!</td>
+										<td class="text-center" colspan="8">Data Tidak Ditemukan!</td>
 									</tr>
 								<?php endif ?>
 							</tbody>
@@ -172,14 +170,6 @@
 									required>
 								</div>
 							</div>
-			 				<div class="form-group">
-								<label for="jumlah_dipinjam" class="control-label col-md-3">* Jumlah Pinjam</label>
-								<div class="col-md-9">
-									<input type="text" name="jumlah_dipinjam" id="jumlah_dipinjam" class="form-control required 
-										<?php if (form_error('jumlah_dipinjam')) { echo "error"; } ?>" 
-									required>
-								</div>
-							</div>
 						</fieldset>
 					</form>
 				</div>
@@ -202,15 +192,13 @@
             const code = $(this).data('code');
             const brand = $(this).data('brand');
             const jumlah_datas = $(this).data('jumlah_datas');
-            const jumlah_dipinjam = $(this).data('jumlah_dipinjam');
             const status = $(this).data('status');
             // Set data to Form Edit
             $('#id').val(id);
             $('#code').val(code);
             $('#brand').val(brand);
             $('#jumlah_datas').val(jumlah_datas);
-			$('#jumlah_dipinjam').val(jumlah_dipinjam);
-            $('#status').val(status).trigger('change');
+			$('#status').val(status).trigger('change');
             // Call Modal Edit
             $('#pindahkanModal').modal('show');
         });  

@@ -225,14 +225,6 @@
 									</div>
 								</div>
 								<div class="form-group">
-									<label for="jumlah_dipinjam" class="control-label col-md-2">Jumlah Dipinjam</label>
-									<div class="col-md-4">
-										<div class="input-group">
-											<input type="number" name="jumlah_dipinjam" id="jumlah_dipinjam" class="form-control" maxlength="12" min="0">
-										</div>
-									</div>
-								</div>
-								<div class="form-group">
 										<label for="length" class="control-label col-md-2">Panjang</label>
 										<div class="col-md-4">
 											<div class="input-group">

@@ -38,7 +38,6 @@
 					$curr_location_id      = $data->location_id;
 					$curr_status           = $data->status;
 					$curr_jumlah_datas     = $data->jumlah_datas;
-					$curr_jumlah_dipinjam  = $data->jumlah_dipinjam;
 					$curr_length           = $data->length;
 					$curr_width            = $data->width;
 					$curr_height           = $data->height;
@@ -243,14 +242,6 @@
 								<div class="col-md-4">
 									<div class="input-group">
 										<input type="number" name="jumlah_datas" id="jumlah_datas" class="form-control" maxlength="12" min="0" value="<?php echo $curr_jumlah_datas ?>">
-									</div>
-								</div>
-							</div>
-							<div class="form-group">
-								<label for="jumlah_dipinjam" class="control-label col-md-2">Jumlah Dipinjam</label>
-								<div class="col-md-4">
-									<div class="input-group">
-										<input type="number" name="jumlah_dipinjam" id="jumlah_dipinjam" class="form-control" maxlength="12" min="0" value="<?php echo $curr_jumlah_dipinjam ?>">
 									</div>
 								</div>
 							</div>
