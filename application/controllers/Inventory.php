@@ -126,6 +126,8 @@ class Inventory extends CI_Controller
 			// set the flash data error message if there is one
 			$this->data['message'] = (validation_errors()) ? validation_errors() :
 				$this->session->flashdata('message');
+			$this->data['stat_list']  = $this->status_model->get_status('', '', '', 'asc');
+			//ABCDE
 
 			$this->load->view('partials/_alte_header', $this->data);
 			$this->load->view('partials/_alte_menu');
@@ -451,6 +453,7 @@ class Inventory extends CI_Controller
 			$this->form_validation->set_rules('serial_number', 'Serial Number', 'trim|addslashes|callback__sn_check');
 			$this->form_validation->set_rules('color', 'Color', 'trim|addslashes');
 			$this->form_validation->set_rules('new_color', 'New Color', 'alpha_numeric_spaces|trim|addslashes');
+			$this->form_validation->set_rules('jumlah_datas', 'jumlah_datas', 'numeric|trim');
 			$this->form_validation->set_rules('length', 'Length', 'numeric|trim');
 			$this->form_validation->set_rules('width', 'Width', 'numeric|trim');
 			$this->form_validation->set_rules('height', 'Height', 'numeric|trim');
@@ -489,6 +492,7 @@ class Inventory extends CI_Controller
 						'serial_number'    => $this->input->post('serial_number'),
 						'status'           => $this->input->post('status2'),
 						'color'            => $color,
+						'jumlah_datas'     => $this->input->post('jumlah_datas'),
 						'length'           => $this->input->post('length'),
 						'width'            => $this->input->post('width'),
 						'height'           => $this->input->post('height'),
@@ -707,6 +711,7 @@ class Inventory extends CI_Controller
 			$this->form_validation->set_rules('serial_number', 'Serial Number', 'trim|addslashes');
 			$this->form_validation->set_rules('color', 'Color', 'trim|addslashes');
 			$this->form_validation->set_rules('new_color', 'New Color', 'alpha_numeric_spaces|trim|addslashes');
+			$this->form_validation->set_rules('jumlah_datas', 'jumlah_datas', 'numeric|trim');
 			$this->form_validation->set_rules('length', 'Length', 'numeric|trim');
 			$this->form_validation->set_rules('width', 'Width', 'numeric|trim');
 			$this->form_validation->set_rules('height', 'Height', 'numeric|trim');
@@ -744,6 +749,7 @@ class Inventory extends CI_Controller
 						'serial_number'    => $this->input->post('serial_number'),
 						'status'           => $this->input->post('status2'),
 						'color'            => $color,
+						'jumlah_datas'     => $this->input->post('jumlah_datas'),
 						'length'           => $this->input->post('length'),
 						'width'            => $this->input->post('width'),
 						'height'           => $this->input->post('height'),
@@ -901,6 +907,86 @@ class Inventory extends CI_Controller
 		}
 	}
 	// Delete data end
+
+	/**
+	 *	move Data
+	 *	If there's data sent, update
+	 *	Else, show the form
+	 *
+	 *	@param 		string 		$code
+	 *	@return 	void
+	 *
+	 */
+	public function move()
+	{
+		// Not logged in, redirect to home
+		if (!$this->ion_auth->logged_in()) {
+			redirect('auth/login/inventory', 'refresh');
+		}
+		// Logged in
+		else {
+			// input validation rules
+			$this->form_validation->set_rules('code', 'Code', 'alpha_numeric|trim|required');
+			$this->form_validation->set_rules('brand', 'Brand', 'trim|required|addslashes');
+			$this->form_validation->set_rules('jumlah_datas', 'jumlah_datas', 'numeric|trim');
+			// check if there's valid input
+			if (isset($_POST) && !empty($_POST)) {
+				// validation run
+				if ($this->form_validation->run() === TRUE) {
+					// GET INPUT
+					$code = $this->input->post('code');
+					$brand = $this->input->post('brand');
+					$jumlah_datas = $this->input->post('jumlah_datas');
+					$status = $this->input->post('status');
+					// GET JUMLAH DATAS OLD
+					$datas = $this->db->get_where('inv_datas', array('code' => $code))->result_array();
+					$jumlah_baru = $datas[0]['jumlah_datas'] - $jumlah_datas;
+					// inv data array
+					$data = array(
+						'brand' => $brand,
+						'jumlah_datas' => $jumlah_baru,
+						'status' => $status
+					);
+					// check to see if we are updating the data
+					if ($this->inventory_model->update_inventory_by_code($code, $data)) {
+						// Set message
+						$this->session->set_userdata(
+							'message',
+							$this->config->item('message_start_delimiter', 'ion_auth')
+								. "Inventory Updated!" .
+								$this->config->item('message_end_delimiter', 'ion_auth')
+						);
+						redirect('inv_keluar/add/' . $code . '/' . $jumlah_datas, 'refresh');
+					} else {
+						$this->session->set_userdata(
+							'message',
+							$this->config->item('error_start_delimiter', 'ion_auth')
+								. "Inventory Update Failed!" .
+								$this->config->item('error_end_delimiter', 'ion_auth')
+						);
+					}
+				} else {
+					$this->session->set_userdata(
+						'message',
+						validation_errors()
+					);
+				}
+			}
+			redirect('inventory/all', 'refresh');
+		}
+	}
+	public function print()
+	{
+		// Not logged in, redirect to home
+		if (!$this->ion_auth->logged_in()) {
+			redirect('auth/login/inventory', 'refresh');
+		}
+		// Logged in
+		else {
+			$this->data['data_list']  = $this->inventory_model->get_inventory();
+			$this->load->view('inv_data/print', $this->data);
+		}
+	}
 }
 
 /* End of Inventory.php */

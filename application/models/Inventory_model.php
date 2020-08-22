@@ -38,6 +38,7 @@ class Inventory_model extends CI_Model
 				$this->datas_table . ".serial_number, " .
 				$this->datas_table . ".status, " .
 				$this->datas_table . ".color, " .
+				$this->datas_table . ".jumlah_datas, " .
 				$this->datas_table . ".length, " .
 				$this->datas_table . ".width, " .
 				$this->datas_table . ".height, " .
@@ -116,6 +117,7 @@ class Inventory_model extends CI_Model
 				$this->datas_table . ".status, " .
 				$this->status_table . ".name AS status_name, " .
 				$this->datas_table . ".color, " .
+				$this->datas_table . ".jumlah_datas, " .
 				$this->datas_table . ".length, " .
 				$this->datas_table . ".width, " .
 				$this->datas_table . ".height, " .
@@ -199,6 +201,7 @@ class Inventory_model extends CI_Model
 				$this->datas_table . ".serial_number, " .
 				$this->datas_table . ".status, " .
 				$this->datas_table . ".color, " .
+				$this->datas_table . ".jumlah_datas, " .
 				$this->datas_table . ".length, " .
 				$this->datas_table . ".width, " .
 				$this->datas_table . ".height, " .
@@ -272,10 +275,10 @@ class Inventory_model extends CI_Model
 				$this->datas_table . ".code, " .
 				$this->datas_table . ".brand, " .
 				$this->datas_table . ".model, " .
-				$this->datas_table . ".jumlah, " .
 				$this->datas_table . ".serial_number, " .
 				$this->datas_table . ".status, " .
 				$this->datas_table . ".color, " .
+				$this->datas_table . ".jumlah_datas, " .
 				$this->datas_table . ".length, " .
 				$this->datas_table . ".width, " .
 				$this->datas_table . ".height, " .
@@ -414,11 +417,11 @@ class Inventory_model extends CI_Model
 				$this->datas_table . ".code, " .
 				$this->datas_table . ".brand, " .
 				$this->datas_table . ".model, " .
-				$this->datas_table . ".jumlah, " .
 				$this->datas_table . ".serial_number, " .
 				$this->datas_table . ".status, " .
 				$this->status_table . ".name AS status_name, " .
 				$this->datas_table . ".color, " .
+				$this->datas_table . ".jumlah_datas, " .
 				$this->datas_table . ".length, " .
 				$this->datas_table . ".width, " .
 				$this->datas_table . ".height, " .

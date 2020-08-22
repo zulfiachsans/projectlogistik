@@ -10,7 +10,7 @@
 			</h1>
 
 			<ol class="breadcrumb">
-				<li><a href="<?php echo base_url("inventory") ?>"><i class="fa fa-archive"></i> Inventory</a></li>
+				<li><a href="<?php echo base_url("inventory/all") ?>"><i class="fa fa-archive"></i> Inventory</a></li>
 				<li><a href="<?php echo base_url("inventory/by_category"); ?>">Kategori</a></li>
 				<li class="active"><?php echo $category_name ?></li>
 			</ol>

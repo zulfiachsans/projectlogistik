@@ -25,6 +25,7 @@
       $curr_category         = $data->category_name;
       $curr_location_id      = $data->location_id;
       $curr_location         = $data->location_name;
+      $curr_jumlah_datas     = $data->jumlah_datas;
       $curr_status           = $data->status;
       $curr_status_name      = $data->status_name;
       $curr_length           = $data->length;
@@ -106,6 +107,10 @@
                 <tr>
                   <th class="col-lg-4 active">Warna</th>
                   <td><?php echo $curr_color ?></td>
+                </tr>
+                <tr>
+                  <th class="col-lg-4 active">Jumlah Datas</th>
+                  <td><?php echo $curr_jumlah_datas ?></td>
                 </tr>
                 <tr>
                   <th class="active">Harga</th>

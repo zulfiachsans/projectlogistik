@@ -213,6 +213,14 @@
 							</div>
 							<hr>
 							<div class="form-group">
+								<label for="jumlah_datas" class="control-label col-md-2">Jumlah Datas</label>
+								<div class="col-md-4">
+									<div class="input-group">
+										<input type="number" name="jumlah_datas" id="jumlah_datas" class="form-control" maxlength="12" min="0" value="<?php echo set_value('jumlah_datas') ?>">
+									</div>
+								</div>
+							</div>
+							<div class="form-group">
 								<label for="length" class="control-label col-md-2">Panjang</label>
 								<div class="col-md-4">
 									<div class="input-group">

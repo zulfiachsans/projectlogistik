@@ -6,11 +6,11 @@
 		<section class="content-header">
 			<h1>
 				Inventory
-				<small>Semua data</small>
+				<small>Semua data item</small>
 			</h1>
 			<ol class="breadcrumb">
 				<li><a href="<?php echo base_url("inventory") ?>"><i class="fa fa-archive"></i> Inventory</a></li>
-				<li class="active">Category</li>
+				<li class="active">Kategori</li>
 			</ol>
 		</section>
 

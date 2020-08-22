@@ -57,12 +57,6 @@
 									</div>
 								</div>
 								<div class="form-group">
-									<label for="model" class="control-label col-md-2">Jumlah</label>
-									<div class="col-md-8">
-										<input type="text" name="model" id="model" class="form-control">
-									</div>
-								</div>
-								<div class="form-group">
 									<label for="serial_number" class="control-label col-md-2">Serial Number</label>
 									<div class="col-md-8">
 										<input type="text" name="serial_number" id="serial_number" class="form-control">
@@ -222,6 +216,14 @@
 									</div>
 								</div>
 								<hr>
+								<div class="form-group">
+									<label for="jumlah_datas" class="control-label col-md-2">Jumlah Datas</label>
+									<div class="col-md-4">
+										<div class="input-group">
+											<input type="number" name="jumlah_datas" id="jumlah_datas" class="form-control" maxlength="12" min="0">
+										</div>
+									</div>
+								</div>
 								<div class="form-group">
 									<label for="length" class="control-label col-md-2">Panjang</label>
 									<div class="col-md-4">

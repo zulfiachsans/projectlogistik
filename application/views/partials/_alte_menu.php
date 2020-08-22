@@ -46,10 +46,10 @@
 							</span>
 						</a>
 						<ul class="treeview-menu">
-							<li><a href="<?php echo base_url('inventory/all') ?>"><i class="fa fa-list-alt"></i> Semua data</a></li>
-							<li><a href="<?php echo base_url('inventory/by_category') ?>"><i class="fa fa-star-o"></i> By Category</a></li>
-							<li><a href="<?php echo base_url('inventory/by_location') ?>"><i class="fa fa-map-pin"></i> By Location</a></li>
-							<li><a href="<?php echo base_url('inventory/search') ?>"><i class="fa fa-search"></i> Pencarian</a></li>
+							<li><a href="<?php echo base_url('inv_keluar/all') ?>"><i class="fa fa-list-alt"></i> Semua data</a></li>
+							<li><a href="<?php echo base_url('inv_keluar/by_category') ?>"><i class="fa fa-star-o"></i> By Category</a></li>
+							<li><a href="<?php echo base_url('inv_keluar/by_location') ?>"><i class="fa fa-map-pin"></i> By Location</a></li>
+							<li><a href="<?php echo base_url('inv_keluar/search') ?>"><i class="fa fa-search"></i> Pencarian</a></li>
 						</ul>
 					</li>
 					<li class="header">MASTER</li>

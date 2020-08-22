@@ -37,6 +37,7 @@
 					$curr_category_id      = $data->category_id;
 					$curr_location_id      = $data->location_id;
 					$curr_status           = $data->status;
+					$curr_jumlah_datas     = $data->jumlah_datas;
 					$curr_length           = $data->length;
 					$curr_width            = $data->width;
 					$curr_height           = $data->height;
@@ -56,33 +57,37 @@
 							<div class="form-group">
 								<label for="code" class="control-label col-md-2">Kode</label>
 								<div class="col-md-4">
-									<input type="text" name="code" id="code" class="form-control required <?php if (form_error('code')) {
-																												echo "error";
-																											} ?>" value="<?php echo $curr_code ?>" disabled>
+									<input type="text" name="code" id="code" class="form-control required 
+										<?php if (form_error('code')) {
+											echo "error";
+										} ?>" value="<?php echo $curr_code ?>" disabled>
 								</div>
 							</div>
 							<div class="form-group">
 								<label for="brand" class="control-label col-md-2">* Nama Produk</label>
 								<div class="col-md-8">
-									<input type="text" name="brand" id="brand" class="form-control required <?php if (form_error('brand')) {
-																												echo "error";
-																											} ?>" value="<?php echo $curr_brand ?>" required>
+									<input type="text" name="brand" id="brand" class="form-control required 
+										<?php if (form_error('brand')) {
+											echo "error";
+										} ?>" value="<?php echo $curr_brand ?>" required>
 								</div>
 							</div>
 							<div class="form-group">
 								<label for="model" class="control-label col-md-2">Tipe</label>
 								<div class="col-md-8">
-									<input type="text" name="model" id="model" class="form-control <?php if (form_error('model')) {
-																										echo "error";
-																									} ?>" value="<?php echo $curr_model ?>">
+									<input type="text" name="model" id="model" class="form-control 
+										<?php if (form_error('model')) {
+											echo "error";
+										} ?>" value="<?php echo $curr_model ?>">
 								</div>
 							</div>
 							<div class="form-group">
 								<label for="serial_number" class="control-label col-md-2">Serial Number</label>
 								<div class="col-md-8">
-									<input type="text" name="serial_number" id="serial_number" class="form-control <?php if (form_error('serial_number')) {
-																														echo "error";
-																													} ?>" value="<?php echo $curr_serial_number ?>">
+									<input type="text" name="serial_number" id="serial_number" class="form-control 
+										<?php if (form_error('serial_number')) {
+											echo "error";
+										} ?>" value="<?php echo $curr_serial_number ?>">
 								</div>
 							</div>
 							<hr>
@@ -233,6 +238,14 @@
 								</div>
 							</div>
 							<hr>
+							<div class="form-group">
+								<label for="jumlah_datas" class="control-label col-md-2">Jumlah Datas</label>
+								<div class="col-md-4">
+									<div class="input-group">
+										<input type="number" name="jumlah_datas" id="jumlah_datas" class="form-control" maxlength="12" min="0" value="<?php echo $curr_jumlah_datas ?>">
+									</div>
+								</div>
+							</div>
 							<div class="form-group">
 								<label for="length" class="control-label col-md-2">Panjang</label>
 								<div class="col-md-4">
