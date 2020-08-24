@@ -40,12 +40,12 @@
 							<thead>
 								<tr>
 									<th width="50">Kode</th>
+									<th width="150">Tanggal Masuk</th>
 									<th width="150">Nama Produk</th>
 									<th width="150">Tipe</th>
 									<th width="150">Total Barang</th>
 									<th width="150">Kategori</th>
 									<th width="150">Lokasi</th>
-									<th width="100">Foto</th>
 									<th>#</th>
 								</tr>
 							</thead>
@@ -54,13 +54,12 @@
 									<?php foreach ($data_list->result() as $data) : ?>
 										<tr>
 											<td><?php echo $data->code; ?></td>
+											<td><?php echo $data->date_of_purchase; ?></td>
 											<td><?php echo $data->brand; ?></td>
 											<td><?php echo $data->model; ?></td>
 											<td><?php echo $data->jumlah_datas; ?></td>
 											<td><?php echo $data->category_name; ?></td>
 											<td><?php echo $data->location_name; ?></td>
-											<td><?php if ($data->thumbnail != "") : ?><a href="<?php echo base_url('assets/uploads/images/inventory/') . $data->photo ?>" data-fancybox data-caption="<?php echo $data->brand . " " . $data->model ?>">
-														<img src="<?php echo base_url('assets/uploads/images/inventory/') . $data->thumbnail ?>" alt="<?php echo $data->brand . " " . $data->model ?>"></a><?php endif ?></td>
 											<td width="15%" align="center">
 												<form action="<?php echo base_url('inventory/delete/' . $data->code) ?>" method="post" autocomplete="off">
 													<div class="btn-group-vertical">
