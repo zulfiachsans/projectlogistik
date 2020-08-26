@@ -33,12 +33,12 @@
 						<form id="input_form" action="<?php echo base_url('inventory/add') ?>" method="post" autocomplete="off" class="form form-horizontal" enctype="multipart/form-data">
 							<h3>Info Dasar</h3>
 							<fieldset>
-								<div class="form-group">
+								<!-- <div class="form-group">
 									<label for="code" class="control-label col-md-2">* Kode</label>
 									<div class="col-md-4">
 										<input type="text" name="code" id="code" class="form-control required" required>
 									</div>
-								</div>
+								</div> -->
 								<div class="form-group">
 									<label for="brand" class="control-label col-md-2">* Nama Produk</label>
 									<div class="col-md-8">
@@ -86,9 +86,10 @@
 												?>
 													<div class="radio">
 														<label for="category2_<?php echo $cls2->id; ?>">
-															<input type="radio" name="category2" id="category2_<?php echo $cls2->id; ?>" value="<?php echo $cls2->id; ?>" <?php if ($xs == 1) {
-																																												echo "checked";
-																																											} ?>>
+															<input type="radio" name="category2" id="category2_<?php echo $cls2->id; ?>" 
+															value="<?= $cls2->id; ?>_<?= $cls2->code; ?>" <?php if ($xs == 1) {
+																	echo "checked";
+																} ?>>
 															<?php echo $cls2->name ?>
 														</label>
 													</div>
@@ -101,9 +102,11 @@
 														$xs++; ?>
 														<div class="radio">
 															<label for="category2_<?php echo $cls2->id; ?>">
-																<input type="radio" name="category2" id="category2_<?php echo $cls2->id; ?>" value="<?php echo $cls2->id; ?>" <?php if ($xs == 1) {
-																																													echo "checked";
-																																												} ?>>
+																<input type="radio" name="category2" id="category2_<?php echo $cls2->id; ?>" 
+																value="<?= $cls2->id; ?>_<?= $cls2->code; ?>" 
+																<?php if ($xs == 1) {
+																		echo "checked";
+																	} ?>>
 																<?php echo $cls2->name ?>
 															</label>
 														</div>
@@ -184,7 +187,7 @@
 									<div class="col-md-4">
 										<select name="location" id="location" class="form-control select2 required" style="width:100%">
 											<?php foreach ($loc_list->result() as $lls) {
-												echo "<option value='" . $lls->id . "'>" . $lls->name . "</option>";
+												echo "<option value='" . $lls->id . "_" . $lls->code . "'>" . $lls->name . "</option>";
 											} ?>
 										</select>
 									</div>
@@ -217,7 +220,7 @@
 								</div>
 								<hr>
 								<div class="form-group">
-								<label for="jumlah_datas" class="control-label col-md-2">Jumlah Datas</label>
+									<label for="jumlah_datas" class="control-label col-md-2">Jumlah Datas</label>
 									<div class="col-md-4">
 										<div class="input-group">
 											<input type="number" name="jumlah_datas" id="jumlah_datas" class="form-control" maxlength="12" min="0">
@@ -225,42 +228,42 @@
 									</div>
 								</div>
 								<div class="form-group">
-										<label for="length" class="control-label col-md-2">Panjang</label>
-										<div class="col-md-4">
-											<div class="input-group">
-												<input type="number" name="length" id="length" class="form-control" maxlength="12" min="0">
-												<span class="input-group-addon">Cm</span>
-											</div>
+									<label for="length" class="control-label col-md-2">Panjang</label>
+									<div class="col-md-4">
+										<div class="input-group">
+											<input type="number" name="length" id="length" class="form-control" maxlength="12" min="0">
+											<span class="input-group-addon">Cm</span>
 										</div>
 									</div>
-									<div class="form-group">
-										<label for="width" class="control-label col-md-2">Width</label>
-										<div class="col-md-4">
-											<div class="input-group">
-												<input type="number" name="width" id="width" class="form-control" maxlength="12" min="0">
-												<span class="input-group-addon">Cm</span>
-											</div>
+								</div>
+								<div class="form-group">
+									<label for="width" class="control-label col-md-2">Width</label>
+									<div class="col-md-4">
+										<div class="input-group">
+											<input type="number" name="width" id="width" class="form-control" maxlength="12" min="0">
+											<span class="input-group-addon">Cm</span>
 										</div>
 									</div>
-									<div class="form-group">
-										<label for="height" class="control-label col-md-2">Height</label>
-										<div class="col-md-4">
-											<div class="input-group">
-												<input type="number" name="height" id="height" class="form-control" maxlength="12" min="0">
-												<span class="input-group-addon">Cm</span>
-											</div>
+								</div>
+								<div class="form-group">
+									<label for="height" class="control-label col-md-2">Height</label>
+									<div class="col-md-4">
+										<div class="input-group">
+											<input type="number" name="height" id="height" class="form-control" maxlength="12" min="0">
+											<span class="input-group-addon">Cm</span>
 										</div>
 									</div>
-									<div class="form-group">
-										<label for="weight" class="control-label col-md-2">Berat</label>
-										<div class="col-md-4">
-											<div class="input-group">
-												<input type="number" name="weight" id="weight" class="form-control" maxlength="12" min="0">
-												<span class="input-group-addon">Kg</span>
-											</div>
+								</div>
+								<div class="form-group">
+									<label for="weight" class="control-label col-md-2">Berat</label>
+									<div class="col-md-4">
+										<div class="input-group">
+											<input type="number" name="weight" id="weight" class="form-control" maxlength="12" min="0">
+											<span class="input-group-addon">Kg</span>
 										</div>
 									</div>
-								</fieldset>
+								</div>
+							</fieldset>
 
 							<h3>Additional Info</h3>
 							<fieldset>

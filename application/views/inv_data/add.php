@@ -35,35 +35,27 @@
 						<h3>Info Dasar</h3>
 						<fieldset>
 							<div class="form-group">
-								<label for="code" class="control-label col-md-2">* Kode</label>
-								<div class="col-md-4">
-									<input type="text" name="code" id="code" class="form-control required <?php if (form_error('code')) {
-																												echo "error";
-																											} ?>" value="<?php echo set_value('code') ?>" required>
-								</div>
-							</div>
-							<div class="form-group">
 								<label for="brand" class="control-label col-md-2">* Nama Produk</label>
 								<div class="col-md-8">
 									<input type="text" name="brand" id="brand" class="form-control required <?php if (form_error('brand')) {
-																												echo "error";
-																											} ?>" value="<?php echo set_value('brand') ?>" required>
+												echo "error";
+											} ?>" value="<?php echo set_value('brand') ?>" required>
 								</div>
 							</div>
 							<div class="form-group">
 								<label for="model" class="control-label col-md-2">Tipe</label>
 								<div class="col-md-8">
 									<input type="text" name="model" id="model" class="form-control <?php if (form_error('model')) {
-																										echo "error";
-																									} ?>" value="<?php echo set_value('model') ?>">
+											echo "error";
+										} ?>" value="<?php echo set_value('model') ?>">
 								</div>
 							</div>
 							<div class="form-group">
 								<label for="serial_number" class="control-label col-md-2">Serial Number</label>
 								<div class="col-md-8">
 									<input type="text" name="serial_number" id="serial_number" class="form-control <?php if (form_error('serial_number')) {
-																														echo "error";
-																													} ?>" value="<?php echo set_value('serial_number') ?>">
+										echo "error";
+															} ?>" value="<?php echo set_value('serial_number') ?>">
 								</div>
 							</div>
 							<hr>
@@ -90,7 +82,9 @@
 											?>
 												<div class="radio">
 													<label for="category2_<?php echo $cls2->id; ?>">
-														<input type="radio" name="category2" id="category2_<?php echo $cls2->id; ?>" value="<?php echo $cls2->id; ?>" <?php echo set_radio('category2', $cls2->id); ?>>
+														<input type="radio" name="category2" id="category2_<?php echo $cls2->id; ?>" 
+														value="<?= $cls2->id; ?>_<?= $cls2->code; ?>" 
+														<?php echo set_radio('category2', $cls2->id); ?>>
 														<?php echo $cls2->name ?>
 													</label>
 												</div>
@@ -103,7 +97,9 @@
 													$xs++; ?>
 													<div class="radio">
 														<label for="category2_<?php echo $cls2->id; ?>">
-															<input type="radio" name="category2" id="category2_<?php echo $cls2->id; ?>" value="<?php echo $cls2->id; ?>" <?php echo set_radio('category2', $cls2->id); ?>>
+															<input type="radio" name="category2" id="category2_<?php echo $cls2->id; ?>" 
+															value="<?= $cls2->id; ?>_<?= $cls2->code; ?>" 
+															<?php echo set_radio('category2', $cls2->id); ?>>
 															<?php echo $cls2->name ?>
 														</label>
 													</div>
@@ -180,7 +176,7 @@
 								<div class="col-md-4">
 									<select name="location" id="location" class="form-control select2 required" style="width:100%">
 										<?php foreach ($loc_list->result() as $lls) {
-											echo "<option value='" . $lls->id . "' " . set_select('location', $lls->id) . ">" . $lls->name . "</option>";
+											echo "<option value='" . $lls->id . "_" . $lls->code . "' " . set_select('location', $lls->id) . ">" . $lls->name . "</option>";
 										} ?>
 									</select>
 								</div>

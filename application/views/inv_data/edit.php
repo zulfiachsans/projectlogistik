@@ -58,35 +58,36 @@
 								<label for="code" class="control-label col-md-2">Kode</label>
 								<div class="col-md-4">
 									<input type="text" name="code" id="code" class="form-control required 
-										<?php if (form_error('code')) { echo "error"; } ?>" 
-										value="<?php echo $curr_code ?>" 
-									disabled>
+										<?php if (form_error('code')) {
+											echo "error";
+										} ?>" value="<?php echo $curr_code ?>" disabled>
 								</div>
 							</div>
 							<div class="form-group">
 								<label for="brand" class="control-label col-md-2">* Nama Produk</label>
 								<div class="col-md-8">
 									<input type="text" name="brand" id="brand" class="form-control required 
-										<?php if (form_error('brand')) { echo "error"; } ?>" 
-										value="<?php echo $curr_brand ?>" 
-									required>
+										<?php if (form_error('brand')) {
+											echo "error";
+										} ?>" value="<?php echo $curr_brand ?>" required>
 								</div>
 							</div>
 							<div class="form-group">
 								<label for="model" class="control-label col-md-2">Tipe</label>
 								<div class="col-md-8">
 									<input type="text" name="model" id="model" class="form-control 
-										<?php if (form_error('model')) { echo "error"; } ?>" 
-										value="<?php echo $curr_model ?>"
-									>
+										<?php if (form_error('model')) {
+											echo "error";
+										} ?>" value="<?php echo $curr_model ?>">
 								</div>
 							</div>
 							<div class="form-group">
 								<label for="serial_number" class="control-label col-md-2">Serial Number</label>
 								<div class="col-md-8">
 									<input type="text" name="serial_number" id="serial_number" class="form-control 
-										<?php if (form_error('serial_number')) { echo "error"; } ?>" 
-										value="<?php echo $curr_serial_number ?>">
+										<?php if (form_error('serial_number')) {
+											echo "error";
+										} ?>" value="<?php echo $curr_serial_number ?>">
 								</div>
 							</div>
 							<hr>

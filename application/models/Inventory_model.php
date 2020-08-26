@@ -534,7 +534,36 @@ class Inventory_model extends CI_Model
 		}
 		return FALSE;
 	}
-
+	/**
+	 * Code check
+	 * If duplicate FALSE
+	 * Else TRUE
+	 *
+	 * @param 		string		$code
+	 * @return 	array
+	 *
+	 */
+	public function last_code($code)
+	{
+		$this->db->like('code', trim($code));
+		$datas = $this->db->get($this->datas_table)->result_array();
+		if (count($datas)>0){
+			$count=count($datas);
+			$count=$count-1;
+			$last_code = explode("-",$datas[$count]['code']);
+			$last_code = intval($last_code[2])+1;
+			$strlen    = strlen($last_code);
+			if ($strlen==3){
+				$last_code="0".$last_code;
+			} elseif ($strlen==2){
+				$last_code="00".$last_code;
+			} elseif ($strlen==1){
+				$last_code="000".$last_code;
+			}
+			return $last_code;
+		}
+		return FALSE;
+	}
 	/**
 	 * Code check
 	 * If duplicate FALSE

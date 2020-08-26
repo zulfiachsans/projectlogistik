@@ -29,22 +29,22 @@
 					</div>
 				</div>
 				<div class="box-body">
-					<?php if ($this->session->userdata('message')){
+					<?php if ($this->session->userdata('message')) {
 						echo $this->session->userdata('message');
 						$this->session->unset_userdata('message');
-					}?>
-					
+					} ?>
+
 					<div class="table-responsive">
 						<table class="table table-hover table-bordered table-striped">
 							<thead>
 								<tr>
 									<th width="50">Kode</th>
+									<th width="150">Tanggal Keluar</th>
 									<th width="150">Nama Produk</th>
 									<th width="150">Tipe</th>
 									<th width="150">Total Barang</th>
 									<th width="150">Kategori</th>
 									<th width="150">Lokasi</th>
-									<th width="100">Foto</th>
 									<th>#</th>
 								</tr>
 							</thead>
@@ -53,13 +53,12 @@
 									<?php foreach ($data_list->result() as $data) : ?>
 										<tr>
 											<td><?php echo $data->code; ?></td>
+											<td><?php echo $data->date_of_purchase; ?></td>
 											<td><?php echo $data->brand; ?></td>
 											<td><?php echo $data->model; ?></td>
 											<td><?php echo $data->jumlah_datas; ?></td>
 											<td><?php echo $data->category_name; ?></td>
 											<td><?php echo $data->location_name; ?></td>
-											<td><?php if ($data->thumbnail != "") : ?><a href="<?php echo base_url('assets/uploads/images/inventory/') . $data->photo ?>" data-fancybox data-caption="<?php echo $data->brand . " " . $data->model ?>">
-														<img src="<?php echo base_url('assets/uploads/images/inventory/') . $data->thumbnail ?>" alt="<?php echo $data->brand . " " . $data->model ?>"></a><?php endif ?></td>
 											<td width="15%" align="center">
 												<form action="<?php echo base_url('inv_keluar/delete/' . $data->code) ?>" method="post" autocomplete="off">
 													<div class="btn-group-vertical">
@@ -98,76 +97,71 @@
 
 	<!-- =========================== / CONTENT =========================== -->
 
- 	<!-- Insert New Data box -->
+	<!-- Insert New Data box -->
 	<div class="modal fade" id="pindahkanModal" tabindex="-1" role="dialog">
 		<div class="modal-dialog" role="document">
-		<div class="modal-content">
-			<div class="box-header with-border" >
-				<h3 class="box-title">Edit Data</h3>
-				<div class="box-tools pull-right">
-					<button class="btn btn-white btn-box-tool" data-dismiss="modal" id="myboxwidget"><i class="fa fa-close"></i></button>
+			<div class="modal-content">
+				<div class="box-header with-border">
+					<h3 class="box-title">Edit Data</h3>
+					<div class="box-tools pull-right">
+						<button class="btn btn-white btn-box-tool" data-dismiss="modal" id="myboxwidget"><i class="fa fa-close"></i></button>
+					</div>
 				</div>
-			</div>
-			<div class="box-body">
-				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-					<form id="input_form" action="<?php echo base_url('inventory/move/')?>" method="post" autocomplete="off" class="form form-horizontal" enctype="multipart/form-data">
-						<h3>Basic Info</h3>
-						<fieldset>
-							<div class="form-group" hidden>
-								<label for="id" class="control-label col-md-3">Id</label>
-								<div class="col-md-9">
-									<input type="text" name="id" id="id" 
-										class="form-control required"  
-									readonly>
+				<div class="box-body">
+					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+						<form id="input_form" action="<?php echo base_url('inventory/move/') ?>" method="post" autocomplete="off" class="form form-horizontal" enctype="multipart/form-data">
+							<h3>Basic Info</h3>
+							<fieldset>
+								<div class="form-group" hidden>
+									<label for="id" class="control-label col-md-3">Id</label>
+									<div class="col-md-9">
+										<input type="text" name="id" id="id" class="form-control required" readonly>
+									</div>
 								</div>
-							</div>
-							<div class="form-group">
-								<label for="code" class="control-label col-md-3">Kode</label>
-								<div class="col-md-9">
-									<input type="text" name="code" id="code" 
-										class="form-control required"  
-									readonly>
+								<div class="form-group">
+									<label for="code" class="control-label col-md-3">Kode</label>
+									<div class="col-md-9">
+										<input type="text" name="code" id="code" class="form-control required" readonly>
+									</div>
 								</div>
-							</div>
-							<div class="form-group">
-								<label for="brand" class="control-label col-md-3">* Nama Produk</label>
-								<div class="col-md-9">
-									<input type="text" name="brand" id="brand" 
-										class="form-control required>" 
-									readonly>
+								<div class="form-group">
+									<label for="brand" class="control-label col-md-3">* Nama Produk</label>
+									<div class="col-md-9">
+										<input type="text" name="brand" id="brand" class="form-control required>" readonly>
+									</div>
 								</div>
-							</div>
-							<div class="form-group">
-								<label for="status" class="control-label col-md-3">* Status</label>
-								<div class="col-md-9">
-								<select name="status" id="status" class="form-control">
-								<?php if (count($stat_list->result()) > 0) : ?>
-								<?php foreach ($stat_list->result() as $cls) : ?>
-									<option value="<?= $cls->id; ?>"><?= $cls->name; ?>
-								<?php endforeach; ?>
-								<?php endif; ?>
-								</select>
+								<div class="form-group">
+									<label for="status" class="control-label col-md-3">* Status</label>
+									<div class="col-md-9">
+										<select name="status" id="status" class="form-control">
+											<?php if (count($stat_list->result()) > 0) : ?>
+												<?php foreach ($stat_list->result() as $cls) : ?>
+													<option value="<?= $cls->id; ?>"><?= $cls->name; ?>
+													<?php endforeach; ?>
+												<?php endif; ?>
+										</select>
+									</div>
+									<br>
 								</div>
-								<br>
-							</div>
-						</fieldset>
+							</fieldset>
 
-						<h3>Spesifikasi</h3>
-						<fieldset>
-							<div class="form-group">
-								<label for="jumlah_datas" class="control-label col-md-3">* Jumlah Datas</label>
-								<div class="col-md-9">
-									<input type="text" name="jumlah_datas" id="jumlah_datas" class="form-control required 
-										<?php if (form_error('jumlah_datas')) { echo "error"; } ?>" 
-									required>
+							<h3>Spesifikasi</h3>
+							<fieldset>
+								<div class="form-group">
+									<label for="jumlah_datas" class="control-label col-md-3">* Jumlah Datas</label>
+									<div class="col-md-9">
+										<input type="text" name="jumlah_datas" id="jumlah_datas" class="form-control required 
+										<?php if (form_error('jumlah_datas')) {
+											echo "error";
+										} ?>" required>
+									</div>
 								</div>
-							</div>
-						</fieldset>
-					</form>
+							</fieldset>
+						</form>
+					</div>
 				</div>
+				<!-- /.box-body -->
 			</div>
-			<!-- /.box-body -->
-		</div>
 		</div>
 	</div>
-		<!-- /.box -->
+	<!-- /.box -->
