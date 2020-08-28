@@ -447,7 +447,7 @@ class Inventory extends CI_Controller
 		// Logged in
 		else {
 			// input validation rules
-			$this->form_validation->set_rules('code', 'Code', 'alpha_numeric|trim|required|callback__code_check');
+			// $this->form_validation->set_rules('code', 'Code', 'alpha_numeric|trim|required|callback__code_check');
 			$this->form_validation->set_rules('brand', 'Brand', 'trim|required|addslashes');
 			$this->form_validation->set_rules('model', 'Model', 'trim|addslashes');
 			$this->form_validation->set_rules('serial_number', 'Serial Number', 'trim|addslashes|callback__sn_check');
@@ -482,11 +482,18 @@ class Inventory extends CI_Controller
 
 				// validation run
 				if ($this->form_validation->run() === TRUE) {
+					// CODE A0044
+					$loc = explode("_", $this->input->post('location'));
+					$cat = explode("_", $this->input->post('category2'));
+					$code = $loc[1] . "-" . $cat[1] . "-";
+					$last_code = $this->last_code($code);
+					$code = $loc[1] . "-" . $cat[1] . "-" . $last_code;
 					// inv data array
 					$data = array(
-						'code'             => $this->input->post('code'),
-						'category_id'      => $this->input->post('category2'),
-						'location_id'      => $this->input->post('location'),
+						// 'code'             => $this->input->post('code'),
+						'code'			   => $code,
+						'category_id'      => $cat[0], // $this->input->post('category2'),
+						'location_id'      => $loc[0], // $this->input->post('location'),
 						'brand'            => $this->input->post('brand'),
 						'model'            => $this->input->post('model'),
 						'serial_number'    => $this->input->post('serial_number'),
@@ -501,15 +508,15 @@ class Inventory extends CI_Controller
 						'date_of_purchase' => $this->input->post('date_of_purchase'),
 						'description'      => $this->input->post('description'),
 						'deleted'          => '0',
-					);
+					); // var_dump($data);
 
 					// logging array
 					$data_location_log = array(
-						'code'        => $this->input->post('code'),
+						'code'        => $code,
 						'location_id' => $this->input->post('location'),
 					);
 					$data_status_log = array(
-						'code'      => $this->input->post('code'),
+						'code'      => $code,
 						'status_id' => $this->input->post('status2'),
 					);
 
@@ -531,9 +538,9 @@ class Inventory extends CI_Controller
 						$link_foto      = "";
 						$link_thumbnail = "";
 						if (!empty($_FILES['photo']['name'])) {
-							$config['file_name']     = trim($this->input->post('code') . str_replace(" ", "_", $this->input->post('brand')) . str_replace(" ", "_", $this->input->post('model')));
+							$config['file_name']     = trim($code . str_replace(" ", "_", $this->input->post('brand')) . str_replace(" ", "_", $this->input->post('model')));
 							$config['upload_path']   = './assets/uploads/images/inventory/';
-							$config['allowed_types'] = 'gif|jpg|png';
+							$config['allowed_types'] = 'gif|jpg|jpeg|png';
 							$config['max_size']      = 5000;
 							$config['overwrite']     = TRUE;
 							$this->load->library('upload', $config);
@@ -566,7 +573,7 @@ class Inventory extends CI_Controller
 								// save to database
 								$datas['photo']     = $link_foto;
 								$datas['thumbnail'] = $link_thumbnail;
-								$this->inventory_model->update_inventory_by_code($this->input->post('code'), $datas);
+								$this->inventory_model->update_inventory_by_code($code, $datas);
 							}
 						}
 					} else {
@@ -622,7 +629,22 @@ class Inventory extends CI_Controller
 		}
 	}
 	// Add data end
-
+	/**
+	 *	Callback to check duplicate code
+	 *
+	 *	@param 		string 		$code
+	 *	@return 	bool
+	 *
+	 */
+	public function last_code($code)
+	{
+		$datas = $this->inventory_model->last_code($code);
+		if (!empty($datas)) {
+			return $datas;
+		} else {
+			return "0001";
+		}
+	}
 	/**
 	 *	Callback to check duplicate code
 	 *
@@ -926,7 +948,7 @@ class Inventory extends CI_Controller
 		// Logged in
 		else {
 			// input validation rules
-			$this->form_validation->set_rules('code', 'Code', 'alpha_numeric|trim|required');
+			$this->form_validation->set_rules('code', 'Code', 'trim|required');
 			$this->form_validation->set_rules('brand', 'Brand', 'trim|required|addslashes');
 			$this->form_validation->set_rules('jumlah_datas', 'jumlah_datas', 'numeric|trim');
 			// check if there's valid input

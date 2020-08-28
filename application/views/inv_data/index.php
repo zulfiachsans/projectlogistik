@@ -33,12 +33,12 @@
 						<form id="input_form" action="<?php echo base_url('inventory/add') ?>" method="post" autocomplete="off" class="form form-horizontal" enctype="multipart/form-data">
 							<h3>Info Dasar</h3>
 							<fieldset>
-								<div class="form-group">
+								<!-- <div class="form-group">
 									<label for="code" class="control-label col-md-2">* Kode</label>
 									<div class="col-md-4">
 										<input type="text" name="code" id="code" class="form-control required" required>
 									</div>
-								</div>
+								</div> -->
 								<div class="form-group">
 									<label for="brand" class="control-label col-md-2">* Nama Produk</label>
 									<div class="col-md-8">
@@ -86,9 +86,9 @@
 												?>
 													<div class="radio">
 														<label for="category2_<?php echo $cls2->id; ?>">
-															<input type="radio" name="category2" id="category2_<?php echo $cls2->id; ?>" value="<?php echo $cls2->id; ?>" <?php if ($xs == 1) {
-																																												echo "checked";
-																																											} ?>>
+															<input type="radio" name="category2" id="category2_<?php echo $cls2->id; ?>" value="<?= $cls2->id; ?>_<?= $cls2->code; ?>" <?php if ($xs == 1) {
+																																															echo "checked";
+																																														} ?>>
 															<?php echo $cls2->name ?>
 														</label>
 													</div>
@@ -101,9 +101,9 @@
 														$xs++; ?>
 														<div class="radio">
 															<label for="category2_<?php echo $cls2->id; ?>">
-																<input type="radio" name="category2" id="category2_<?php echo $cls2->id; ?>" value="<?php echo $cls2->id; ?>" <?php if ($xs == 1) {
-																																													echo "checked";
-																																												} ?>>
+																<input type="radio" name="category2" id="category2_<?php echo $cls2->id; ?>" value="<?= $cls2->id; ?>_<?= $cls2->code; ?>" <?php if ($xs == 1) {
+																																																echo "checked";
+																																															} ?>>
 																<?php echo $cls2->name ?>
 															</label>
 														</div>
@@ -184,7 +184,7 @@
 									<div class="col-md-4">
 										<select name="location" id="location" class="form-control select2 required" style="width:100%">
 											<?php foreach ($loc_list->result() as $lls) {
-												echo "<option value='" . $lls->id . "'>" . $lls->name . "</option>";
+												echo "<option value='" . $lls->id . "_" . $lls->code . "'>" . $lls->name . "</option>";
 											} ?>
 										</select>
 									</div>
