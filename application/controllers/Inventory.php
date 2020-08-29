@@ -483,17 +483,17 @@ class Inventory extends CI_Controller
 				// validation run
 				if ($this->form_validation->run() === TRUE) {
 					// CODE A0044
-					$loc =explode("_",$this->input->post('location'));
-					$cat =explode("_",$this->input->post('category2'));
-					$code=$loc[1]."-".$cat[1]."-";
-					$last_code=$this->last_code($code);
-					$code=$loc[1]."-".$cat[1]."-".$last_code;
+					$loc = explode("_", $this->input->post('location'));
+					$cat = explode("_", $this->input->post('category2'));
+					$code = $loc[1] . "-" . $cat[1] . "-";
+					$last_code = $this->last_code($code);
+					$code = $loc[1] . "-" . $cat[1] . "-" . $last_code;
 					// inv data array
 					$data = array(
 						// 'code'             => $this->input->post('code'),
 						'code'			   => $code,
-						'category_id'      => $cat[0],// $this->input->post('category2'),
-						'location_id'      => $loc[0],// $this->input->post('location'),
+						'category_id'      => $cat[0], // $this->input->post('category2'),
+						'location_id'      => $loc[0], // $this->input->post('location'),
 						'brand'            => $this->input->post('brand'),
 						'model'            => $this->input->post('model'),
 						'serial_number'    => $this->input->post('serial_number'),
@@ -960,6 +960,7 @@ class Inventory extends CI_Controller
 					$brand = $this->input->post('brand');
 					$jumlah_datas = $this->input->post('jumlah_datas');
 					$status = $this->input->post('status');
+					$date_on = $this->input->post('date_on');
 					// GET JUMLAH DATAS OLD
 					$datas = $this->db->get_where('inv_datas', array('code' => $code))->result_array();
 					$jumlah_baru = $datas[0]['jumlah_datas'] - $jumlah_datas;
@@ -978,7 +979,13 @@ class Inventory extends CI_Controller
 								. "Inventory Updated!" .
 								$this->config->item('message_end_delimiter', 'ion_auth')
 						);
-						redirect('inv_keluar/add/' . $code . '/' . $jumlah_datas, 'refresh');
+						$data=array(
+							'code' => $code,
+							'jumlah_datas' => $jumlah_datas,
+							'date_on' => $date_on
+						);
+						$this->session->set_flashdata($data);
+						redirect('inv_keluar/add/', 'refresh', $this->data);
 					} else {
 						$this->session->set_userdata(
 							'message',
