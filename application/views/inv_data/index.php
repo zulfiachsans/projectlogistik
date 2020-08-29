@@ -86,10 +86,9 @@
 												?>
 													<div class="radio">
 														<label for="category2_<?php echo $cls2->id; ?>">
-															<input type="radio" name="category2" id="category2_<?php echo $cls2->id; ?>" 
-															value="<?= $cls2->id; ?>_<?= $cls2->code; ?>" <?php if ($xs == 1) {
-																	echo "checked";
-																} ?>>
+															<input type="radio" name="category2" id="category2_<?php echo $cls2->id; ?>" value="<?= $cls2->id; ?>_<?= $cls2->code; ?>" <?php if ($xs == 1) {
+																																															echo "checked";
+																																														} ?>>
 															<?php echo $cls2->name ?>
 														</label>
 													</div>
@@ -102,11 +101,9 @@
 														$xs++; ?>
 														<div class="radio">
 															<label for="category2_<?php echo $cls2->id; ?>">
-																<input type="radio" name="category2" id="category2_<?php echo $cls2->id; ?>" 
-																value="<?= $cls2->id; ?>_<?= $cls2->code; ?>" 
-																<?php if ($xs == 1) {
-																		echo "checked";
-																	} ?>>
+																<input type="radio" name="category2" id="category2_<?php echo $cls2->id; ?>" value="<?= $cls2->id; ?>_<?= $cls2->code; ?>" <?php if ($xs == 1) {
+																																																echo "checked";
+																																															} ?>>
 																<?php echo $cls2->name ?>
 															</label>
 														</div>

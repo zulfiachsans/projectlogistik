@@ -21,6 +21,7 @@
 			<div class="box box-primary">
 				<div class="box-header with-border">
 					<h3 class="box-title">Inventory
+						<a class="btn btn-sm btn-primary" href="<?php echo base_url('inv_keluar/print/') ?>" role="button" target="_blank"><i class="fa fa-print"></i> Print</a>
 					</h3>
 
 					<div class="box-tools pull-right">

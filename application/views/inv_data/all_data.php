@@ -21,7 +21,7 @@
 			<div class="box box-primary">
 				<div class="box-header with-border">
 					<h3 class="box-title">Inventory &ensp;
-						<a class="btn btn-sm btn-primary" href="<?php echo base_url('inventory/print/') ?>" role="button"><i class="fa fa-print"></i> Print</a>
+						<a class="btn btn-sm btn-primary" href="<?php echo base_url('inventory/print/') ?>" role="button" target="_blank"><i class="fa fa-print"></i> Print</a>
 					</h3>
 
 					<div class="box-tools pull-right">
@@ -67,7 +67,14 @@
 														<a class="btn btn-sm btn-primary" href="<?php echo base_url('inventory/edit/' . $data->code) ?>" role="button"><i class="fa fa-pencil"></i> Edit</a>
 														<input type="hidden" name="id" value="<?php echo $data->id; ?>">
 														<button type="submit" class="btn btn-sm btn-danger" role="button" onclick="return confirm('Delete this data?')"><i class="fa fa-trash"></i> Hapus</button>
-														<a class="btn btn-sm btn-default btn-pindahkan" href="#" role="button" data-id="<?= $data->id ?>" data-code="<?= $data->code ?>" data-brand="<?= $data->brand ?>" data-jumlah_datas="<?= $data->jumlah_datas ?>" data-status="<?= $data->status ?>"><i class="fa fa-arrow-right"></i> Pindahkan</a>
+														<a class="btn btn-sm btn-default btn-pindahkan" href="#" role="button" 
+														data-id="<?= $data->id ?>" 
+														data-code="<?= $data->code ?>" 
+														data-brand="<?= $data->brand ?>" 
+														data-jumlah_datas="<?= $data->jumlah_datas ?>" 
+														data-status="<?= $data->status ?>"
+														data-created="<?= $data->created_on ?>">
+														<i class="fa fa-arrow-right"></i> Pindahkan</a>
 													</div>
 												</form>
 											</td>
@@ -150,6 +157,15 @@
 							<h3>Spesifikasi</h3>
 							<fieldset>
 								<div class="form-group">
+									<label for="date_on" class="control-label col-md-3">* Date On</label>
+									<div class="col-md-9">
+										<input type="text" name="date_on" id="date_on" class="form-control required 
+										<?php if (form_error('date_on')) {
+											echo "error";
+										} ?>" readonly>
+									</div>
+								</div>
+								<div class="form-group">
 									<label for="jumlah_datas" class="control-label col-md-3">* Jumlah Datas</label>
 									<div class="col-md-9">
 										<input type="text" name="jumlah_datas" id="jumlah_datas" class="form-control required 
@@ -181,12 +197,14 @@
 				const brand = $(this).data('brand');
 				const jumlah_datas = $(this).data('jumlah_datas');
 				const status = $(this).data('status');
+				const created = $(this).data('created');
 				// Set data to Form Edit
 				$('#id').val(id);
 				$('#code').val(code);
 				$('#brand').val(brand);
 				$('#jumlah_datas').val(jumlah_datas);
 				$('#status').val(status).trigger('change');
+				$('#date_on').val(created);
 				// Call Modal Edit
 				$('#pindahkanModal').modal('show');
 			});
