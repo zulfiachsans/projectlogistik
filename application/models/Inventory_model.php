@@ -48,6 +48,8 @@ class Inventory_model extends CI_Model
 				$this->datas_table . ".photo, " .
 				$this->datas_table . ".thumbnail, " .
 				$this->datas_table . ".description, " .
+				$this->datas_table . ".created_on, " .
+				$this->datas_table . ".created_by, " .
 				$this->datas_table . ".deleted, " .
 				$this->datas_table . ".category_id, " .
 				$this->categories_table . ".name AS category_name, " .
@@ -547,18 +549,18 @@ class Inventory_model extends CI_Model
 	{
 		$this->db->like('code', trim($code));
 		$datas = $this->db->get($this->datas_table)->result_array();
-		if (count($datas)>0){
-			$count=count($datas);
-			$count=$count-1;
-			$last_code = explode("-",$datas[$count]['code']);
-			$last_code = intval($last_code[2])+1;
+		if (count($datas) > 0) {
+			$count = count($datas);
+			$count = $count - 1;
+			$last_code = explode("-", $datas[$count]['code']);
+			$last_code = intval($last_code[2]) + 1;
 			$strlen    = strlen($last_code);
-			if ($strlen==3){
-				$last_code="0".$last_code;
-			} elseif ($strlen==2){
-				$last_code="00".$last_code;
-			} elseif ($strlen==1){
-				$last_code="000".$last_code;
+			if ($strlen == 3) {
+				$last_code = "0" . $last_code;
+			} elseif ($strlen == 2) {
+				$last_code = "00" . $last_code;
+			} elseif ($strlen == 1) {
+				$last_code = "000" . $last_code;
 			}
 			return $last_code;
 		}
