@@ -38,13 +38,14 @@
 						<table class="table table-hover table-bordered table-striped">
 							<thead>
 								<tr>
-									<th width="50">Kode</th>
-									<th width="150">Tanggal Keluar</th>
-									<th width="150">Nama Produk</th>
-									<th width="150">Tipe</th>
-									<th width="150">Total Barang</th>
-									<th width="150">Kategori</th>
-									<th width="150">Lokasi</th>
+									<th width="180">Kode</th>
+									<th width="180">Tanggal Masuk</th>
+									<th width="180">Tanggal Keluar</th>
+									<th width="200">Nama Produk</th>
+									<th width="180">Tipe</th>
+									<th width="180">Total Barang</th>
+									<th width="180">Kategori</th>
+									<th width="180">Lokasi</th>
 									<th>#</th>
 								</tr>
 							</thead>
@@ -53,6 +54,7 @@
 									<?php foreach ($data_list->result() as $data) : ?>
 										<tr>
 											<td><?php echo $data->code; ?></td>
+											<td><?php echo $data->date_of_purchase; ?></td>
 											<td><?php echo $data->date_of_purchase; ?></td>
 											<td><?php echo $data->brand; ?></td>
 											<td><?php echo $data->model; ?></td>
@@ -122,6 +124,15 @@
 									<label for="code" class="control-label col-md-3">Kode</label>
 									<div class="col-md-9">
 										<input type="text" name="code" id="code" class="form-control required" readonly>
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="date_of_purchase" class="control-label col-md-2">Tanggal Pembelian</label>
+									<div class="col-md-4">
+										<div class="input-group">
+											<input type="text" name="date_of_purchase" id="date_of_purchase" class="form-control datepicker" maxlength="10">
+											<span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+										</div>
 									</div>
 								</div>
 								<div class="form-group">

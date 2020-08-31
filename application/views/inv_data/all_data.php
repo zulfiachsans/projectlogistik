@@ -39,13 +39,13 @@
 						<table class="table table-hover table-bordered table-striped">
 							<thead>
 								<tr>
-									<th width="50">Kode</th>
-									<th width="150">Tanggal Masuk</th>
-									<th width="150">Nama Produk</th>
-									<th width="150">Tipe</th>
-									<th width="150">Total Barang</th>
-									<th width="150">Kategori</th>
-									<th width="150">Lokasi</th>
+									<th width="180">Kode</th>
+									<th width="180">Tanggal Masuk</th>
+									<th width="200">Nama Produk</th>
+									<th width="180">Tipe</th>
+									<th width="180">Total Barang</th>
+									<th width="180">Kategori</th>
+									<th width="180">Lokasi</th>
 									<th>#</th>
 								</tr>
 							</thead>
@@ -67,7 +67,7 @@
 														<a class="btn btn-sm btn-primary" href="<?php echo base_url('inventory/edit/' . $data->code) ?>" role="button"><i class="fa fa-pencil"></i> Edit</a>
 														<input type="hidden" name="id" value="<?php echo $data->id; ?>">
 														<button type="submit" class="btn btn-sm btn-danger" role="button" onclick="return confirm('Delete this data?')"><i class="fa fa-trash"></i> Hapus</button>
-														<a class="btn btn-sm btn-default btn-pindahkan" href="#" role="button" data-id="<?= $data->id ?>" data-code="<?= $data->code ?>" data-brand="<?= $data->brand ?>" data-jumlah_datas="<?= $data->jumlah_datas ?>" data-status="<?= $data->status ?>"><i class="fa fa-arrow-right"></i> Pindahkan</a>
+														<a class="btn btn-sm btn-default btn-pindahkan" href="#" role="button" data-id="<?= $data->id ?>" data-code="<?= $data->code ?>" data-date_of_purchase="<?= $data->date_of_purchase ?>" data-brand="<?= $data->brand ?>" data-jumlah_datas="<?= $data->jumlah_datas ?>" data-status="<?= $data->status ?>"><i class="fa fa-arrow-right"></i> Pindahkan</a>
 													</div>
 												</form>
 											</td>
@@ -150,12 +150,21 @@
 							<h3>Spesifikasi</h3>
 							<fieldset>
 								<div class="form-group">
-									<label for="jumlah_datas" class="control-label col-md-3">* Jumlah Datas</label>
+									<label for="jumlah_datas" class="control-label col-md-3">* Jumlah Data</label>
 									<div class="col-md-9">
 										<input type="text" name="jumlah_datas" id="jumlah_datas" class="form-control required 
 										<?php if (form_error('jumlah_datas')) {
 											echo "error";
 										} ?>" required>
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="date_of_purchase" class="control-label col-md-3">Tanggal Keluar</label>
+									<div class="col-md-4">
+										<div class="input-group">
+											<input type="text" name="date_of_purchase" id="date_of_purchase" class="form-control datepicker" maxlength="10" value="<?php echo set_value('date_of_purchase') ?>">
+											<span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+										</div>
 									</div>
 								</div>
 							</fieldset>
@@ -178,6 +187,7 @@
 				// get data from button edit
 				const id = $(this).data('id');
 				const code = $(this).data('code');
+				const date_of_purchase = $(this).data('date_of_purchase');
 				const brand = $(this).data('brand');
 				const jumlah_datas = $(this).data('jumlah_datas');
 				const status = $(this).data('status');
