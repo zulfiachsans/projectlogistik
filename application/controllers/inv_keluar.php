@@ -568,7 +568,7 @@ class Inv_keluar extends CI_Controller
      *	@return 	void
      *
      */
-    public function add($code, $jumlah_datas)
+    public function add()
     {
         // Jika tidak login, kembalikan ke halaman utama
         if (!$this->ion_auth->logged_in()) {
@@ -576,7 +576,7 @@ class Inv_keluar extends CI_Controller
         }
         // Jika login
         else {
-            if ($code == "") {
+            if (empty($this->session->flashdata('code'))) {
                 $this->session->set_flashdata(
                     'message',
                     $this->config->item('error_start_delimiter', 'ion_auth')
@@ -585,7 +585,12 @@ class Inv_keluar extends CI_Controller
                 );
                 redirect('welcome', 'refresh');
             }
-            if ($this->inv_keluar_model->insert_data($code, $jumlah_datas)) {
+            // extract flashdata
+            $code = $this->session->flashdata('code');
+            $jumlah_datas = $this->session->flashdata('jumlah_datas');
+            $date_on = $this->session->flashdata('date_on');
+            // insert new inv keluar
+            if ($this->inv_keluar_model->insert_data($code, $jumlah_datas, $date_on)) {
                 $this->session->set_flashdata(
                     'message',
                     $this->config->item('success_start_delimiter', 'ion_auth')
@@ -607,8 +612,18 @@ class Inv_keluar extends CI_Controller
         }
     }
     // add data end
-
-
+    public function print()
+    {
+        // Not logged in, redirect to home
+        if (!$this->ion_auth->logged_in()) {
+            redirect('auth/login/inventory', 'refresh');
+        }
+        // Logged in
+        else {
+            $this->data['data_list']  = $this->inv_keluar_model->get_inventory();
+            $this->load->view('inv_keluar/print', $this->data);
+        }
+    }
 }
 
 /* End of Inventory.php */

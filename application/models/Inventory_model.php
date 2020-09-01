@@ -48,6 +48,8 @@ class Inventory_model extends CI_Model
 				$this->datas_table . ".photo, " .
 				$this->datas_table . ".thumbnail, " .
 				$this->datas_table . ".description, " .
+				$this->datas_table . ".created_on, " .
+				$this->datas_table . ".created_by, " .
 				$this->datas_table . ".deleted, " .
 				$this->datas_table . ".category_id, " .
 				$this->categories_table . ".name AS category_name, " .

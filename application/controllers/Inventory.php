@@ -960,6 +960,7 @@ class Inventory extends CI_Controller
 					$brand = $this->input->post('brand');
 					$jumlah_datas = $this->input->post('jumlah_datas');
 					$status = $this->input->post('status');
+					$date_on = $this->input->post('date_on');
 					// GET JUMLAH DATAS OLD
 					$datas = $this->db->get_where('inv_datas', array('code' => $code))->result_array();
 					$jumlah_baru = $datas[0]['jumlah_datas'] - $jumlah_datas;
@@ -978,7 +979,13 @@ class Inventory extends CI_Controller
 								. "Inventory Updated!" .
 								$this->config->item('message_end_delimiter', 'ion_auth')
 						);
-						redirect('inv_keluar/add/' . $code . '/' . $jumlah_datas, 'refresh');
+						$data = array(
+							'code' => $code,
+							'jumlah_datas' => $jumlah_datas,
+							'date_on' => $date_on
+						);
+						$this->session->set_flashdata($data);
+						redirect('inv_keluar/add/', 'refresh', $this->data);
 					} else {
 						$this->session->set_userdata(
 							'message',

@@ -498,7 +498,7 @@ class Inv_keluar_model extends CI_Model
      *	@return 	bool
      *
      */
-    public function insert_data($code, $jumlah_datas)
+    public function insert_data($code, $jumlah_datas, $date_on)
     {
         $this->datas_table = 'inv_datas';
         $this->db->select(
@@ -527,6 +527,7 @@ class Inv_keluar_model extends CI_Model
         $this->db->where('inv_datas' . ".code", $code);
         $datas = $this->db->get()->result_array();
         $this->db->set('jumlah_datas', $jumlah_datas, FALSE);
+        $this->db->set('date_on', '"' . $date_on . '"', FALSE);
         if ($this->db->insert('inv_keluar', $datas[0])) {
             return TRUE;
         }
