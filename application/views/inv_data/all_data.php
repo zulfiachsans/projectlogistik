@@ -39,7 +39,7 @@
 						<table class="table table-hover table-bordered table-striped">
 							<thead>
 								<tr>
-									<th width="50">Kode</th>
+									<th width="150">Kode</th>
 									<th width="150">Tanggal Masuk</th>
 									<th width="150">Nama Produk</th>
 									<th width="150">Tipe</th>

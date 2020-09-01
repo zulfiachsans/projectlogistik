@@ -39,7 +39,8 @@
 						<table class="table table-hover table-bordered table-striped">
 							<thead>
 								<tr>
-									<th width="50">Kode</th>
+									<th width="150">Kode</th>
+									<th width="150">Tanggal Masuk</th>
 									<th width="150">Tanggal Keluar</th>
 									<th width="150">Nama Produk</th>
 									<th width="150">Tipe</th>
@@ -54,6 +55,7 @@
 									<?php foreach ($data_list->result() as $data) : ?>
 										<tr>
 											<td><?php echo $data->code; ?></td>
+											<td><?php echo $data->date_of_purchase; ?></td>
 											<td><?php echo $data->date_of_purchase; ?></td>
 											<td><?php echo $data->brand; ?></td>
 											<td><?php echo $data->model; ?></td>
